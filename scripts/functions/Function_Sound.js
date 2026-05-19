@@ -398,9 +398,21 @@ audioSound.prototype.Init = function(_props)
 };
 
 audioSound.prototype.start = function(_buffer) {
-    const startOffset = AudioPropsCalc.CalcOffset(this);
-    const trueLoopEnd = (this.loopEnd > 0.0) ? this.loopEnd : _buffer.duration;
+    let startOffset = AudioPropsCalc.CalcOffset(this);
+    
+    // 🔒 VALIDATION: protecting against non-finite values
+    if (!isFinite(startOffset) || startOffset < 0) {
+        console.warn("Invalid startOffset: " + startOffset + ", defaulting to 0");
+        startOffset = 0;
+    }
+    
+    // Limit the offset to the buffer duration if it is valid
+    if (_buffer && isFinite(_buffer.duration) && startOffset > _buffer.duration) {
+        console.warn("startOffset exceeds buffer duration, clamping");
+        startOffset = Math.max(0, _buffer.duration - 0.001); // небольшой запас
+    }
 
+    const trueLoopEnd = (this.loopEnd > 0.0) ? this.loopEnd : (_buffer && isFinite(_buffer.duration) ? _buffer.duration : 0);
     const shouldLoop = (this.loop === true) && (startOffset < trueLoopEnd);
 
     const options = {
@@ -439,7 +451,33 @@ audioSound.prototype.start = function(_buffer) {
         bufferTime: startOffset
     };
 
-    this.pbuffersource.start(0, startOffset);
+    // 🔒 Final protection before calling start()
+    if (isFinite(startOffset) && _buffer && isFinite(_buffer.duration)) {
+        try {
+            this.pbuffersource.start(0, startOffset);
+        } catch (e) {
+            console.error("Failed to start AudioBufferSourceNode:", e);
+            this.bActive = false;
+            if (this.pbuffersource) {
+                this.pbuffersource.disconnect();
+                this.pbuffersource = null;
+            }
+            if (this.pgainnode) this.pgainnode.disconnect();
+        }
+    } else {
+        console.error("Cannot start audio: invalid parameters", {
+            startOffset: startOffset,
+            buffer: _buffer,
+            bufferDuration: _buffer?.duration
+        });
+        this.bActive = false;
+        if (this.pbuffersource) {
+            this.pbuffersource.disconnect();
+            this.pbuffersource = null;
+        }
+        if (this.pgainnode) this.pgainnode.disconnect();
+        return;
+    }
 
     // This is for the case where a streamed asset is paused while it was decoding.
     // Note that AudioBufferSourceNode requires 'start' to have been called before 
