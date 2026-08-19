@@ -18,6 +18,7 @@
     var g_YYOriginalGameMakerTick = window.GameMaker_Tick;
     var g_YYFirstSmoothTick = true;
     var g_YYAnimateRafPending = false;
+    var g_YYCurrentSchedulerRafTimestampMs = 0;
     var g_YYLastSchedulerCallbackMs = 0;
     var g_YYAccumulatorMs = 0;
     var g_YYLastTargetFps = 0;
@@ -200,7 +201,12 @@
         g_YYAnimateRafPending = true;
         window.yyRequestAnimationFrame(function(_timestamp) {
             g_YYAnimateRafPending = false;
-            animate(_timestamp);
+            g_YYCurrentSchedulerRafTimestampMs = _timestamp;
+            try {
+                animate(_timestamp);
+            } finally {
+                g_YYCurrentSchedulerRafTimestampMs = 0;
+            }
         });
     }
 
@@ -310,10 +316,16 @@
             return g_YYOriginalGameMakerTick();
         }
 
-        var _nowMs = (
-            window.performance &&
-            typeof window.performance.now === "function"
-        ) ? window.performance.now() : Date.now();
+        // Use the browser-provided RAF timestamp whenever this callback belongs
+        // to the scheduler-owned chain. performance.now() includes time already
+        // spent executing other RAF callbacks and can therefore create fake
+        // cadence jitter even when the browser's vsync timestamps are perfect.
+        var _nowMs = g_YYCurrentSchedulerRafTimestampMs > 0
+            ? g_YYCurrentSchedulerRafTimestampMs
+            : ((
+                window.performance &&
+                typeof window.performance.now === "function"
+            ) ? window.performance.now() : Date.now());
 
         // The transition from startup state 2 -> 3 happens inside animate(). At
         // the top of that same animate call the runtime has already queued one
