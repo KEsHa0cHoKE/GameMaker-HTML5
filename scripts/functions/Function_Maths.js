@@ -134,7 +134,7 @@ function cos(_a)
 ///			</returns>
 // #############################################################################################
 function dcos(_a) {
-    return cos(yyGetReal(_a) * 0.0174532925);
+    return cos(Pi * yyGetReal(_a) / 180.0);
 }
 
 // #############################################################################################
@@ -163,7 +163,7 @@ function sin(_a)
 ///			</returns>
 // #############################################################################################
 function dsin(_a) {
-    return sin(yyGetReal(_a) * 0.0174532925);
+    return sin(Pi * yyGetReal(_a) / 180.0);
 }
 
 
@@ -194,7 +194,7 @@ function tan(_a)
 ///			</returns>
 // #############################################################################################
 function dtan(_a) {
-    return tan(yyGetReal(_a) * 0.0174532925);
+    return tan(Pi * yyGetReal(_a) / 180.0);
 }
 
 
@@ -274,9 +274,8 @@ function point_direction(_x1,_y1, _x2,_y2)
 	else
 	{
 		var dd = 180.0 * Math.atan2(y, x) / Pi;
-		dd = (~ ~round(dd * 1000000)) / 1000000.0;
 		if ( dd <= 0.0 ) { 
-			return -dd; 
+			return 0.0 - dd; // avoid returning -0 for dd == 0
 		} else { 
 			return (360.0-dd); 
 		}
@@ -613,7 +612,7 @@ function random_set_seed( _val )
 function randomize() 
 {
 	var d =  new Date();
-	var t = d.getMilliseconds() * 1000;
+	var t = d.getTime();
 	t = (t & 0xffffffff) ^ ((t >> 16) & 0xffff) ^ ((t << 16) & 0xffff0000);
     return InitRandomExt( t );
 }
@@ -901,7 +900,7 @@ function arcsin(_val)
 
 function darcsin(_x) 
 {
-    return arcsin(_x) * 57.2957795;
+    return 180.0 * arcsin(_x) / Pi;
 }
 
 // #############################################################################################
@@ -936,7 +935,7 @@ function arccos(_val)
 
 function darccos(_x) 
 {
-    return arccos(_x) * 57.2957795;
+    return 180.0 * arccos(_x) / Pi;
 }
 
 // #############################################################################################
@@ -956,7 +955,7 @@ function arctan(_val)
 
 function darctan(_x) 
 {
-    return Math.atan(yyGetReal(_x)) * 57.2957795;
+    return 180.0 * Math.atan(yyGetReal(_x)) / Pi;
 }
 
 // #############################################################################################
@@ -977,7 +976,7 @@ function arctan2(_y, _x)
 
 function darctan2(_y,_x) 
 {
-    return arctan2(_y, _x) * 57.2957795;
+    return 180.0 * arctan2(_y, _x) / Pi;
 }
 
 // #############################################################################################
@@ -991,7 +990,7 @@ function darctan2(_y,_x)
 ///			</returns>
 // #############################################################################################
 function degtorad(_x) {
-    return yyGetReal(_x) * 0.0174532925;
+    return Pi * yyGetReal(_x) / 180.0;
 }
 
 // #############################################################################################
@@ -1005,7 +1004,7 @@ function degtorad(_x) {
 ///			</returns>
 // #############################################################################################
 function radtodeg(_x) {
-    return yyGetReal(_x) * 57.2957795;
+    return 180.0 * yyGetReal(_x) / Pi;
 }
 
 // #############################################################################################
@@ -1942,6 +1941,11 @@ function yyftime(_val1, _val2) {
         // _val2 is long, promote it to a number (precision for numbers > (2^53)-1 is lost)
         _val2 = _val2.toNumber();
     }
+
+    // string * anything is illegal, only number * string repeats the string (GameMaker-Bugs#16192)
+    if (typeof _val1 === "string") {
+        yyError( "unable to multiply string by " + typeof _val2);
+    } // end if
 
     if ((typeof _val1 === "number") && (typeof _val2 === "string")) {
         var ret = "";
