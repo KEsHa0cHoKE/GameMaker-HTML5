@@ -1,0 +1,49 @@
+name: Rebuild ACTUAL-RUNTIME HTML5 bundle
+
+on:
+  push:
+    branches:
+      - ACTUAL-RUNTIME
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/rebuild-actual-runtime-bundle.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out current branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild from current runtime source files
+        run: node scripts/build-runtime-bundle.js
+
+      - name: Verify custom RAF scheduler is still loaded
+        run: |
+          grep -F 'runtime.frame-scheduler-patch.js' scripts/runner.js
+          node --check scripts/build-runtime-bundle.js
+          node --check scripts/runner.js
+          node --check scripts/runtime.bundle.js
+
+      - name: Commit the rebuilt bundle if changed
+        run: |
+          git add scripts/runtime.bundle.js scripts/runner.js
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "build: regenerate ACTUAL-RUNTIME bundle from current sources"
+            git push
+          else
+            echo "Runtime bundle already up to date."
+          fi
