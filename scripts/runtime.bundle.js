@@ -2468,7 +2468,7 @@ function wallpaper_set_subscriptions(subscriptions)         { ErrorFunction("wal
 // **********************************************************************************************
 // Global
 // **********************************************************************************************
-  	var Pi = 3.14159265,
+  	var Pi = Math.PI,
 	CACHE_SINGLE_IMAGE = true,
 	DEBUG_MODE = false,
 	AUDIO_ON = true,
@@ -6780,6 +6780,11 @@ function variable_instance_set(_id, _var, _val) {
     } // end else
 
     _var = yyGetString(_var);
+    // GML can't set a variable with an empty name, as in the C++ runner. A struct from json_parse can still hold one,
+    // and it can be read, checked and removed (GameMaker-Bugs#16400)
+    if (_var === "") {
+        yyError("variable_struct_set: illegal to use empty names");
+    } // end if
 
     if (pObj != null && pObj.length > 0)
     {    	
@@ -6850,6 +6855,11 @@ function variable_instance_set_post(_id, _var, _val) {
     } // end else
 
     _var = yyGetString(_var);
+    // GML can't set a variable with an empty name, as in the C++ runner. A struct from json_parse can still hold one,
+    // and it can be read, checked and removed (GameMaker-Bugs#16400)
+    if (_var === "") {
+        yyError("variable_struct_set: illegal to use empty names");
+    } // end if
 
     var ret = false;
     if (pObj != null && pObj.length > 0)
@@ -14110,6 +14120,7 @@ yySprite.prototype.ComputeBoundingBox = function(_tolerance)
 
 yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 {
+	var i;
 	var scaledBB = new YYRECT;
 
 	var abs_xscale = Math.abs(_xscale);
@@ -14179,6 +14190,50 @@ yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 			{
 				sliceMidHeight = scaledSpriteHeight - (sliceTopHeight + sliceBottomHeight);
 			}
+
+			var vertsegstouched = [];
+			var horizsegstouched = [];
+			var numvertsegstouched = 0;
+			var numhorizsegstouched = 0;
+
+			if ((tempBB.left < this.nineslicedata.GetLeft()) && (tempBB.right > 0))
+				horizsegstouched[numhorizsegstouched++] = NINESLICE_LEFT;
+
+			if ((tempBB.left < (this.width - this.nineslicedata.GetRight())) && (tempBB.right > this.nineslicedata.GetLeft()))
+				horizsegstouched[numhorizsegstouched++] = NINESLICE_CENTRE;
+
+			if ((tempBB.left < this.width) && (tempBB.right > (this.width - this.nineslicedata.GetRight())))
+				horizsegstouched[numhorizsegstouched++] = NINESLICE_RIGHT;
+
+
+			if ((tempBB.top < this.nineslicedata.GetTop()) && (tempBB.bottom > 0))
+				vertsegstouched[numvertsegstouched++] = NINESLICE_TOP;
+
+			if ((tempBB.top < (this.height - this.nineslicedata.GetBottom())) && (tempBB.bottom > this.nineslicedata.GetTop()))
+				vertsegstouched[numvertsegstouched++] = NINESLICE_CENTRE;
+
+			if ((tempBB.top < this.height) && (tempBB.bottom > (this.height - this.nineslicedata.GetBottom())))
+				vertsegstouched[numvertsegstouched++] = NINESLICE_BOTTOM;
+
+			var allhorizstretch = true;
+			for (i = 0; i < numhorizsegstouched; i++)
+			{
+				if (this.nineslicedata.GetTilemode(horizsegstouched[i]) != NINESLICE_TILE_STRETCH)
+				{
+					allhorizstretch = false;
+					break;
+				}
+			}
+
+			var allvertstretch = true;
+			for (i = 0; i < numvertsegstouched; i++)
+			{
+				if (this.nineslicedata.GetTilemode(vertsegstouched[i]) != NINESLICE_TILE_STRETCH)
+				{
+					allvertstretch = false;
+					break;
+				}
+			}
 			
 			// Work out what segments the bounding box straddles
 			if (tempBB.left <= this.nineslicedata.GetLeft())
@@ -14187,9 +14242,44 @@ yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 				scaledBB.left = sliceLeftWidth + sliceMidWidth + (tempBB.left - (this.width - this.nineslicedata.GetRight()));	// if we're in the right segment the value has the same position relative to the right edge
 			else
 			{
-				// If we're in the middle segment we've got a bit more work to do
-				var ratio = (tempBB.left - this.nineslicedata.GetLeft()) / origSliceMidWidth;
-				scaledBB.left = sliceLeftWidth + (sliceMidWidth * ratio);
+				// If we're in the middle column we've got a bit more work to do
+				// We need to see which of the top, middle and bottom segments are touched by the bounding box
+				// then look at the tile modes of those touched segments and figure out the minimum x value
+				// that satisfies each tile mode
+															
+				if (allvertstretch)	// Fast path
+				{
+					var ratio = (tempBB.left - this.nineslicedata.GetLeft()) / origSliceMidWidth;
+					scaledBB.left = sliceLeftWidth + (sliceMidWidth * ratio);
+				}
+				else
+				{					
+					var minX = Number.MAX_SAFE_INTEGER;
+
+					for (i = 0; i < numvertsegstouched; i++)
+					{
+						var tilemode = this.nineslicedata.GetTilemode(vertsegstouched[i]);
+						switch (tilemode)
+						{
+							case NINESLICE_TILE_STRETCH:
+							case NINESLICE_TILE_HIDE:
+							{
+								var ratio = (tempBB.left - this.nineslicedata.GetLeft()) / origSliceMidWidth;
+								minX = yymin(minX, sliceLeftWidth + (sliceMidWidth * ratio));
+							} break;
+
+							case NINESLICE_TILE_REPEAT:
+							case NINESLICE_TILE_MIRROR:
+							case NINESLICE_TILE_BLANKREPEAT:
+							{
+								var bbleft = yymin(tempBB.left, sliceLeftWidth + sliceMidWidth);
+								minX = yymin(minX, bbleft);
+							} break;
+						}
+					}
+
+					scaledBB.left = minX;
+				}				
 			}
 
 			if (tempBB.right <= this.nineslicedata.GetLeft())
@@ -14198,9 +14288,102 @@ yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 				scaledBB.right = sliceLeftWidth + sliceMidWidth + (tempBB.right - (this.width - this.nineslicedata.GetRight()));	// if we're in the right segment the value has the same position relative to the right edge
 			else
 			{
-				// If we're in the middle segment we've got a bit more work to do
-				var ratio = (tempBB.right - this.nineslicedata.GetLeft()) / origSliceMidWidth;
-				scaledBB.right = sliceLeftWidth + (sliceMidWidth * ratio);
+				// If we're in the middle column we've got a bit more work to do
+				// We need to see which of the top, middle and bottom segments are touched by the bounding box
+				// then look at the tile modes of those touched segments and figure out the maximum x value
+				// that satisfies each tile mode
+
+				if (allvertstretch)	// Fast path
+				{
+					var ratio = (tempBB.right - this.nineslicedata.GetLeft()) / origSliceMidWidth;
+					scaledBB.right = sliceLeftWidth + (sliceMidWidth * ratio);
+				}
+				else
+				{					
+					var maxX = Number.MIN_SAFE_INTEGER;// yymin(tempBB.right, sliceLeftWidth + sliceMidWidth);
+
+					for (i = 0; i < numvertsegstouched; i++)
+					{
+						var tilemode = this.nineslicedata.GetTilemode(vertsegstouched[i]);
+						switch (tilemode)
+						{
+							case NINESLICE_TILE_STRETCH:
+							case NINESLICE_TILE_HIDE:
+							{
+								var ratio = (tempBB.right - this.nineslicedata.GetLeft()) / origSliceMidWidth;
+								maxX = yymax(maxX, sliceLeftWidth + (sliceMidWidth * ratio));
+							} break;
+
+							case NINESLICE_TILE_REPEAT:
+							case NINESLICE_TILE_MIRROR:
+							case NINESLICE_TILE_BLANKREPEAT:
+							{
+								// Work out how many repeats we have				
+								var numRepeats = 0.0;
+								if (origSliceMidWidth > 0)
+								{
+									numRepeats = sliceMidWidth / origSliceMidWidth;
+								}
+
+								if ((numRepeats > 1.0) && (tilemode != NINESLICE_TILE_BLANKREPEAT))
+								{
+									var numfullrepeats = ceil(numRepeats);
+
+									var maxright = sliceLeftWidth + sliceMidWidth;
+									var leftmargin = tempBB.left - sliceLeftWidth;
+									var rightmargin = (sliceLeftWidth + origSliceMidWidth) - tempBB.right;
+
+									var repeatbase = sliceLeftWidth + (origSliceMidWidth * (numfullrepeats - 1));
+
+									var bbright;
+									if (tilemode == NINESLICE_TILE_REPEAT)
+									{											
+										bbright = repeatbase - rightmargin;
+										if ((repeatbase + leftmargin) < maxright)
+										{											
+											bbright += origSliceMidWidth;
+										}										
+									}
+									else
+									{
+										// mirrored repeat	
+										var margin1, margin2;
+										if ((~~numfullrepeats & 1) == 0)
+										{
+											margin1 = rightmargin;
+											margin2 = leftmargin;											
+										}
+										else
+										{
+											margin1 = leftmargin;
+											margin2 = rightmargin;											
+										}							
+										
+										if ((repeatbase + margin1) < maxright)
+										{
+											bbright = (repeatbase + origSliceMidWidth) - margin2;
+										}										
+										else
+										{
+											bbright = repeatbase - margin1;
+										}																		
+									}
+
+									bbright = yymin(bbright, maxright);
+
+									maxX = yymax(maxX, bbright);
+								}
+								else
+								{
+									var bbright = yymin(tempBB.right, sliceLeftWidth + sliceMidWidth);
+									maxX = yymax(maxX, bbright);
+								}
+							} break;
+						}
+					}
+
+					scaledBB.right = maxX;
+				}
 			}
 
 			if (tempBB.top <= this.nineslicedata.GetTop())
@@ -14209,9 +14392,43 @@ yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 				scaledBB.top = sliceTopHeight + sliceMidHeight + (tempBB.top - (this.height - this.nineslicedata.GetBottom()));	// if we're in the bottom segment the value has the same position relative to the bottom edge
 			else
 			{
-				// If we're in the middle segment we've got a bit more work to do
-				var ratio = (tempBB.top - this.nineslicedata.GetTop()) / origSliceMidHeight;
-				scaledBB.top = sliceTopHeight + (sliceMidHeight * ratio);
+				// If we're in the middle row we've got a bit more work to do
+				// We need to see which of the left, middle and right segments are touched by the bounding box
+				// then look at the tile modes of those touched segments and figure out the minimum y value
+				// that satisfies each tile mode
+				if (allhorizstretch)	// Fast path
+				{
+					var ratio = (tempBB.top - this.nineslicedata.GetTop()) / origSliceMidHeight;
+					scaledBB.top = sliceTopHeight + (sliceMidHeight * ratio);
+				}
+				else
+				{
+					var minY = Number.MAX_SAFE_INTEGER;
+
+					for (i = 0; i < numhorizsegstouched; i++)
+					{
+						var tilemode = this.nineslicedata.GetTilemode(horizsegstouched[i]);
+						switch (tilemode)
+						{
+							case NINESLICE_TILE_STRETCH:
+							case NINESLICE_TILE_HIDE:
+							{
+								var ratio = (tempBB.top - this.nineslicedata.GetTop()) / origSliceMidHeight;
+								minY = yymin(minY, sliceTopHeight + (sliceMidHeight * ratio));
+							} break;
+
+							case NINESLICE_TILE_REPEAT:
+							case NINESLICE_TILE_MIRROR:
+							case NINESLICE_TILE_BLANKREPEAT:
+							{
+								var bbtop = yymin(tempBB.top, sliceTopHeight + sliceMidHeight);
+								minY = yymin(minY, bbtop);
+							} break;
+						}
+					}
+
+					scaledBB.top = minY;
+				}
 			}
 
 			if (tempBB.bottom <= this.nineslicedata.GetTop())
@@ -14220,9 +14437,102 @@ yySprite.prototype.GetScaledBoundingBox = function(_xscale, _yscale)
 				scaledBB.bottom = sliceTopHeight + sliceMidHeight + (tempBB.bottom - (this.height - this.nineslicedata.GetBottom()));	// if we're in the bottom segment the value has the same position relative to the bottom edge
 			else
 			{
-				// If we're in the middle segment we've got a bit more work to do
-				var ratio = (tempBB.bottom - this.nineslicedata.GetTop()) / origSliceMidHeight;
-				scaledBB.bottom = sliceTopHeight + (sliceMidHeight * ratio);
+				// If we're in the middle row we've got a bit more work to do
+				// We need to see which of the left, middle and right segments are touched by the bounding box
+				// then look at the tile modes of those touched segments and figure out the maximum y value
+				// that satisfies each tile mode
+
+				if (allhorizstretch)	// Fast path
+				{
+					var ratio = (tempBB.bottom - this.nineslicedata.GetTop()) / origSliceMidHeight;
+					scaledBB.bottom = sliceTopHeight + (sliceMidHeight * ratio);
+				}
+				else
+				{
+					var maxY = Number.MIN_SAFE_INTEGER;// yymin(tempBB.bottom, sliceTopHeight + sliceMidHeight);
+
+					for (i = 0; i < numhorizsegstouched; i++)
+					{
+						var tilemode = this.nineslicedata.GetTilemode(horizsegstouched[i]);
+						switch (tilemode)
+						{
+							case NINESLICE_TILE_STRETCH:
+							case NINESLICE_TILE_HIDE:
+							{
+								var ratio = (tempBB.bottom - this.nineslicedata.GetTop()) / origSliceMidHeight;
+								maxY = yymax(maxY, sliceTopHeight + (sliceMidHeight * ratio));
+							} break;
+
+							case NINESLICE_TILE_REPEAT:
+							case NINESLICE_TILE_MIRROR:
+							case NINESLICE_TILE_BLANKREPEAT:
+							{
+								// Work out how many repeats we have				
+								var numRepeats = 0.0;
+								if (origSliceMidHeight > 0)
+								{
+									numRepeats = sliceMidHeight / origSliceMidHeight;
+								}
+
+								if ((numRepeats > 1.0) && (tilemode != NINESLICE_TILE_BLANKREPEAT))	
+								{
+									var numfullrepeats = ceil(numRepeats);
+
+									var maxbottom = sliceTopHeight + sliceMidHeight;
+									var topmargin = tempBB.top - sliceTopHeight;
+									var bottommargin = (sliceTopHeight + origSliceMidHeight) - tempBB.bottom;
+
+									var repeatbase = sliceTopHeight + (origSliceMidHeight * (numfullrepeats - 1));
+
+									var bbbottom;
+									if (tilemode == NINESLICE_TILE_REPEAT)
+									{																				
+										bbbottom = repeatbase - bottommargin;
+										if ((repeatbase + topmargin) < maxbottom)
+										{
+											bbbottom += origSliceMidHeight;
+										}
+									}
+									else
+									{
+										// mirrored repeat
+										var margin1, margin2;
+										if ((~~numfullrepeats & 1) == 0)
+										{
+											margin1 = bottommargin;
+											margin2 = topmargin;
+										}
+										else
+										{
+											margin1 = topmargin;
+											margin2 = bottommargin;
+										}
+
+										if ((repeatbase + margin1) < maxbottom)
+										{
+											bbbottom = (repeatbase + origSliceMidHeight) - margin2;
+										}
+										else
+										{
+											bbbottom = repeatbase - margin1;
+										}
+									}
+
+									bbbottom = yymin(bbbottom, maxbottom);
+
+									maxY = yymax(maxY, bbbottom);
+								}
+								else
+								{
+									var bbbottom = yymin(tempBB.bottom, sliceTopHeight + sliceMidHeight);
+									maxY = yymax(maxY, bbbottom);
+								}
+							} break;
+						}
+					}
+
+					scaledBB.bottom = maxY;
+				}
 			}
 
 			// Clamp
@@ -19666,8 +19976,8 @@ yyInstance.prototype = {
 		this.bbox_dirty = true; 
 	},
 
-	// image_blend property
-	get image_blend() { return ConvertGMColour(this.__image_blend); },
+	// image_blend property - the colour as GML set it, the drawing code converts it with ConvertGMColour
+	get image_blend() { return this.__image_blend; },
 	set image_blend(_col) { this.__image_blend = yyGetInt32(_col); },
 
 	// image_alpha property
@@ -20263,8 +20573,8 @@ yyInstance.prototype.Compute_Speed1 = function () {
 ///			 </returns>
 // #############################################################################################
 yyInstance.prototype.Compute_Speed2 = function () {
-	this.__hspeed = this.speed * ClampFloat(Math.cos(this.direction * 0.0174532925));   //* Pi / 180.0);
-	this.__vspeed = -this.speed * ClampFloat(Math.sin(this.direction * 0.0174532925)); // * Pi / 180.0);
+	this.__hspeed = this.speed * ClampFloat(Math.cos(this.direction * Pi / 180.0));
+	this.__vspeed = -this.speed * ClampFloat(Math.sin(this.direction * Pi / 180.0));
 
 	// Round a bit
 	if (Math.abs(this.__hspeed - Round(this.__hspeed)) < 0.0001) { this.__hspeed = Round(this.__hspeed); }
@@ -20285,8 +20595,8 @@ function ClampFloat(_f) { return  (~~(_f * 1000000)) / 1000000.0; }
 ///			 </returns>
 // #############################################################################################
 yyInstance.prototype.AddTo_Speed = function (_dir, _amount) {
-	this.hspeed += _amount * ClampFloat( Math.cos(_dir * 0.0174532925)); // * Math.PI / 180.0);
-	this.vspeed -= _amount * ClampFloat( Math.sin( _dir * 0.0174532925)); //* Math.PI / 180.0);
+	this.hspeed += _amount * ClampFloat( Math.cos(_dir * Pi / 180.0));
+	this.vspeed -= _amount * ClampFloat( Math.sin( _dir * Pi / 180.0));
 
 	this.Compute_Speed1();
 };
@@ -39247,7 +39557,7 @@ function	DrawParticle(_pPartSys, _pParticle, _xoff, _yoff, _color, _alpha)
 		} else
 		{
 			//debug("X=" + _X + ",Y=" + _Y + ",  xsc=" + xsc + ",ysc=" + ysc + ",  rot=" + rot + ",  col=" + mulColor + ",  a=" + mulAlpha);
-			Graphics_TextureDraw(pTexture, 0, 0, _X, _Y, xsc, ysc, rot * 0.017453293, mulColor, mulColor, mulColor, mulColor, mulAlpha);
+			Graphics_TextureDraw(pTexture, 0, 0, _X, _Y, xsc, ysc, rot * Pi / 180.0, mulColor, mulColor, mulColor, mulColor, mulAlpha);
 		}
 	}else{
 		// If a user supplied particle, call via sprite handler to draw it.
@@ -52054,7 +52364,7 @@ function weak_ref_create(_pRef)
 
 function weak_ref_alive(_pWeakRef)
 {
-    if (_pWeakRef != undefined)
+    if (arguments.length > 0)
     {
         if ((typeof (_pWeakRef) == "object") && (_pWeakRef.__type != undefined) && (_pWeakRef.__type == "[weakref]"))
         {
@@ -69917,7 +70227,7 @@ function cos(_a)
 ///			</returns>
 // #############################################################################################
 function dcos(_a) {
-    return cos(yyGetReal(_a) * 0.0174532925);
+    return cos(Pi * yyGetReal(_a) / 180.0);
 }
 
 // #############################################################################################
@@ -69946,7 +70256,7 @@ function sin(_a)
 ///			</returns>
 // #############################################################################################
 function dsin(_a) {
-    return sin(yyGetReal(_a) * 0.0174532925);
+    return sin(Pi * yyGetReal(_a) / 180.0);
 }
 
 
@@ -69977,7 +70287,7 @@ function tan(_a)
 ///			</returns>
 // #############################################################################################
 function dtan(_a) {
-    return tan(yyGetReal(_a) * 0.0174532925);
+    return tan(Pi * yyGetReal(_a) / 180.0);
 }
 
 
@@ -70057,9 +70367,8 @@ function point_direction(_x1,_y1, _x2,_y2)
 	else
 	{
 		var dd = 180.0 * Math.atan2(y, x) / Pi;
-		dd = (~ ~round(dd * 1000000)) / 1000000.0;
 		if ( dd <= 0.0 ) { 
-			return -dd; 
+			return 0.0 - dd; // avoid returning -0 for dd == 0
 		} else { 
 			return (360.0-dd); 
 		}
@@ -70396,7 +70705,7 @@ function random_set_seed( _val )
 function randomize() 
 {
 	var d =  new Date();
-	var t = d.getMilliseconds() * 1000;
+	var t = d.getTime();
 	t = (t & 0xffffffff) ^ ((t >> 16) & 0xffff) ^ ((t << 16) & 0xffff0000);
     return InitRandomExt( t );
 }
@@ -70684,7 +70993,7 @@ function arcsin(_val)
 
 function darcsin(_x) 
 {
-    return arcsin(_x) * 57.2957795;
+    return 180.0 * arcsin(_x) / Pi;
 }
 
 // #############################################################################################
@@ -70719,7 +71028,7 @@ function arccos(_val)
 
 function darccos(_x) 
 {
-    return arccos(_x) * 57.2957795;
+    return 180.0 * arccos(_x) / Pi;
 }
 
 // #############################################################################################
@@ -70739,7 +71048,7 @@ function arctan(_val)
 
 function darctan(_x) 
 {
-    return Math.atan(yyGetReal(_x)) * 57.2957795;
+    return 180.0 * Math.atan(yyGetReal(_x)) / Pi;
 }
 
 // #############################################################################################
@@ -70760,7 +71069,7 @@ function arctan2(_y, _x)
 
 function darctan2(_y,_x) 
 {
-    return arctan2(_y, _x) * 57.2957795;
+    return 180.0 * arctan2(_y, _x) / Pi;
 }
 
 // #############################################################################################
@@ -70774,7 +71083,7 @@ function darctan2(_y,_x)
 ///			</returns>
 // #############################################################################################
 function degtorad(_x) {
-    return yyGetReal(_x) * 0.0174532925;
+    return Pi * yyGetReal(_x) / 180.0;
 }
 
 // #############################################################################################
@@ -70788,7 +71097,7 @@ function degtorad(_x) {
 ///			</returns>
 // #############################################################################################
 function radtodeg(_x) {
-    return yyGetReal(_x) * 57.2957795;
+    return 180.0 * yyGetReal(_x) / Pi;
 }
 
 // #############################################################################################
@@ -71725,6 +72034,11 @@ function yyftime(_val1, _val2) {
         // _val2 is long, promote it to a number (precision for numbers > (2^53)-1 is lost)
         _val2 = _val2.toNumber();
     }
+
+    // string * anything is illegal, only number * string repeats the string (GameMaker-Bugs#16192)
+    if (typeof _val1 === "string") {
+        yyError( "unable to multiply string by " + typeof _val2);
+    } // end if
 
     if ((typeof _val1 === "number") && (typeof _val2 === "string")) {
         var ret = "";
@@ -81567,7 +81881,7 @@ function draw_self( _inst )
 
     	    spr.Draw(image_index,
 				_inst.x,_inst.y,_inst.image_xscale, _inst.image_yscale,
-				_inst.image_angle, _inst.image_blend, _inst.image_alpha);
+				_inst.image_angle, ConvertGMColour(_inst.image_blend), _inst.image_alpha);
     	}
     }
     g_skeletonDrawInstance = null;
@@ -82386,9 +82700,21 @@ audioSound.prototype.Init = function(_props)
 };
 
 audioSound.prototype.start = function(_buffer) {
-    const startOffset = AudioPropsCalc.CalcOffset(this);
-    const trueLoopEnd = (this.loopEnd > 0.0) ? this.loopEnd : _buffer.duration;
+    let startOffset = AudioPropsCalc.CalcOffset(this);
+    
+    // 🔒 VALIDATION: protecting against non-finite values
+    if (!isFinite(startOffset) || startOffset < 0) {
+        console.warn("Invalid startOffset: " + startOffset + ", defaulting to 0");
+        startOffset = 0;
+    }
+    
+    // Limit the offset to the buffer duration if it is valid
+    if (_buffer && isFinite(_buffer.duration) && startOffset > _buffer.duration) {
+        console.warn("startOffset exceeds buffer duration, clamping");
+        startOffset = Math.max(0, _buffer.duration - 0.001); // небольшой запас
+    }
 
+    const trueLoopEnd = (this.loopEnd > 0.0) ? this.loopEnd : (_buffer && isFinite(_buffer.duration) ? _buffer.duration : 0);
     const shouldLoop = (this.loop === true) && (startOffset < trueLoopEnd);
 
     const options = {
@@ -82427,7 +82753,33 @@ audioSound.prototype.start = function(_buffer) {
         bufferTime: startOffset
     };
 
-    this.pbuffersource.start(0, startOffset);
+    // 🔒 Final protection before calling start()
+    if (isFinite(startOffset) && _buffer && isFinite(_buffer.duration)) {
+        try {
+            this.pbuffersource.start(0, startOffset);
+        } catch (e) {
+            console.error("Failed to start AudioBufferSourceNode:", e);
+            this.bActive = false;
+            if (this.pbuffersource) {
+                this.pbuffersource.disconnect();
+                this.pbuffersource = null;
+            }
+            if (this.pgainnode) this.pgainnode.disconnect();
+        }
+    } else {
+        console.error("Cannot start audio: invalid parameters", {
+            startOffset: startOffset,
+            buffer: _buffer,
+            bufferDuration: _buffer?.duration
+        });
+        this.bActive = false;
+        if (this.pbuffersource) {
+            this.pbuffersource.disconnect();
+            this.pbuffersource = null;
+        }
+        if (this.pgainnode) this.pgainnode.disconnect();
+        return;
+    }
 
     // This is for the case where a streamed asset is paused while it was decoding.
     // Note that AudioBufferSourceNode requires 'start' to have been called before 
@@ -92703,6 +93055,33 @@ function event_user(_pInst, _pOther, _subevent) {
 
 // #############################################################################################
 /// Function:<summary>
+///          	Performs the pre create event of the object (or the nearest parent that has one) 
+///             using a struct as self, this gathers the variable definitions into the struct.
+///          </summary>
+///
+/// In:		<param name="_pObj">object to start from</param>
+///			<param name="_struct">struct to use as self</param>
+// #############################################################################################
+function Perform_PreCreate_Struct(_pObj, _struct) {
+    var oldobj = Current_Object;
+    var oldtype = Current_Event_Type;
+    var oldnumb = Current_Event_Number;
+    for (var pObj = _pObj; pObj != null; pObj = pObj.pParent) {
+        if (pObj.Event[EVENT_PRE_CREATE]) {
+            Current_Object = pObj;
+            Current_Event_Type = EVENT_PRE_CREATE;
+            Current_Event_Number = 0;
+            pObj.PerformEvent(EVENT_PRE_CREATE, 0, _struct, _struct, true);
+            break;
+        }
+    }
+    Current_Object = oldobj;
+    Current_Event_Type = oldtype;
+    Current_Event_Number = oldnumb;
+}
+
+// #############################################################################################
+/// Function:<summary>
 ///          	Performs the inherited event. This only works if the instance has a parent object.
 ///          </summary>
 ///
@@ -92714,6 +93093,11 @@ function event_user(_pInst, _pOther, _subevent) {
 function event_inherited(_pInst, _pOther) {
     if(YYInstanceof(_pInst) != "instance")
     {
+        // room_get_info runs the pre create event on a struct to gather the variable definitions
+        if ((g_LastEvent == EVENT_PRE_CREATE) && (Current_Object != null)) {
+            Perform_PreCreate_Struct(Current_Object.pParent, _pInst);
+            return;
+        }
         yyError("Attempt to dispatch event on non-instance object");
     }
     _pInst.PerformEventInherited(g_LastEvent, g_LastEventArrayIndex, _pOther);
@@ -93136,6 +93520,14 @@ function os_is_network_connected()
 ///
 // #############################################################################################
 function os_powersave_enable(enable) {  }
+
+// #############################################################################################
+/// Function:<summary>
+///          	Respect or override the ring/silent switch
+///          </summary>
+///
+// #############################################################################################
+function os_respect_silent_switch(enable) { }
 
 // #############################################################################################
 /// Function:<summary>
@@ -94207,9 +94599,309 @@ function room_get_name(_ind)
 function room_name(_ind){ return room_get_name(_ind); }
 
 
-function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tilemap_data)
+// #############################################################################################
+/// Function:<summary>
+///             The variable definitions an instance is created with - run the object pre create
+///             event then the instance pre creation code with a blank struct as self, undefined
+///             if there are none
+///          </summary>
+// #############################################################################################
+function room_get_info_variables(_pObj, _pPreCreateCode)
+{
+    var hasPreCreate = _pObj && _pObj.REvent[EVENT_PRE_CREATE];
+    if (!hasPreCreate && !_pPreCreateCode) return undefined;
+    var variables = {};
+    variables.__yyIsGMLObject = true;
+    if (hasPreCreate) Perform_PreCreate_Struct(_pObj, variables);
+    if (_pPreCreateCode) _pPreCreateCode(variables, variables);
+    return variables;
+}
+
+// #############################################################################################
+/// Function:<summary>
+///             room_get_info for a running room (the current room, or a persistent room that has
+///             been visited) - reports the room as it is now rather than as it was laid out in the
+///             room editor, same layout as the C++ runner
+///          </summary>
+// #############################################################################################
+function room_get_info_live(pRoom, _views, _instances, _layers, _layer_elements, _tilemap_data, _variables)
+{
+    var ret = {};
+    ret.__yyIsGMLObject = true;
+    var pStorage = pRoom.m_pStorage || {};
+
+    variable_struct_set(ret, "width", pRoom.m_width);
+    variable_struct_set(ret, "height", pRoom.m_height);
+    variable_struct_set(ret, "persistent", pRoom.m_persistent);
+    variable_struct_set(ret, "colour", pRoom.m_color);
+    variable_struct_set(ret, "creationCode", pRoom.m_code ? pRoom.m_code : -1);
+    // @if feature("physics")
+    variable_struct_set(ret, "physicsWorld", pRoom.m_pPhysicsWorld ? true : false);
+    variable_struct_set(ret, "physicsGravityX", pStorage.physicsGravityX ? pStorage.physicsGravityX : 0);
+    variable_struct_set(ret, "physicsGravityY", pStorage.physicsGravityY ? pStorage.physicsGravityY : 0);
+    variable_struct_set(ret, "physicsPixToMeters", pStorage.physicsPixToMeters ? pStorage.physicsPixToMeters : 0);
+    // @endif physics
+    variable_struct_set(ret, "enableViews", pRoom.m_enableviews);
+    variable_struct_set(ret, "clearDisplayBuffer", pRoom.m_ClearDisplayBuffer);
+    variable_struct_set(ret, "clearViewportBackground", pRoom.m_ViewClearScreen);
+
+    if (_views) {
+        var views = [];
+        for (var i = 0; i < pRoom.m_Views.length; i++) {
+            var pView = pRoom.m_Views[i];
+            if (!pView) continue;
+            var v = {};
+            v.__yyIsGMLObject = true;
+            variable_struct_set(v, "visible", pView.visible);
+            variable_struct_set(v, "xview", pView.worldx);
+            variable_struct_set(v, "yview", pView.worldy);
+            variable_struct_set(v, "wview", pView.worldw);
+            variable_struct_set(v, "hview", pView.worldh);
+            variable_struct_set(v, "xport", pView.portx);
+            variable_struct_set(v, "yport", pView.porty);
+            variable_struct_set(v, "wport", pView.portw);
+            variable_struct_set(v, "hport", pView.porth);
+            variable_struct_set(v, "hborder", pView.hborder);
+            variable_struct_set(v, "vborder", pView.vborder);
+            variable_struct_set(v, "hspeed", pView.hspeed);
+            variable_struct_set(v, "vspeed", pView.vspeed);
+            var objid = pView.objid;
+            variable_struct_set(v, "object", (objid >= 0) ? ((objid >= 100000) ? MAKE_REF(REFID_INSTANCE, objid) : MAKE_REF(REFID_OBJECT, objid)) : -1);
+            variable_struct_set(v, "cameraID", pView.cameraID);
+            views[i] = v;
+        } // end for
+        variable_struct_set(ret, "views", views);
+    } // end if
+
+    if (_layers) {
+        var layers = [];
+        var layerPool = pRoom.m_Layers.pool;
+        for (var l = 0; l < layerPool.length; l++) {
+            var pLayer = layerPool[l];
+            if (!pLayer) continue;
+            var newLayer = {};
+            newLayer.__yyIsGMLObject = true;
+            variable_struct_set(newLayer, "id", pLayer.m_id);
+            variable_struct_set(newLayer, "name", pLayer.m_pName);
+            variable_struct_set(newLayer, "depth", pLayer.depth);
+            variable_struct_set(newLayer, "xoffset", pLayer.m_xoffset);
+            variable_struct_set(newLayer, "yoffset", pLayer.m_yoffset);
+            variable_struct_set(newLayer, "hspeed", pLayer.m_hspeed);
+            variable_struct_set(newLayer, "vspeed", pLayer.m_vspeed);
+            variable_struct_set(newLayer, "visible", pLayer.m_visible);
+            variable_struct_set(newLayer, "beginScript", pLayer.m_beginScript ? pLayer.m_beginScript : -1);
+            variable_struct_set(newLayer, "endScript", pLayer.m_endScript ? pLayer.m_endScript : -1);
+            variable_struct_set(newLayer, "effectEnabled", pLayer.m_effectEnabled);
+            variable_struct_set(newLayer, "effectToBeEnabled", pLayer.m_effectToBeEnabled);
+            variable_struct_set(newLayer, "shaderID", MAKE_REF(REFID_SHADER, pLayer.m_shaderId));
+
+            var pEffectInfo = pLayer.m_pInitialEffectInfo;
+            if (pEffectInfo) {
+                var effectInfo = {};
+                effectInfo.__yyIsGMLObject = true;
+                variable_struct_set(effectInfo, "name", pEffectInfo.pName);
+                variable_struct_set(effectInfo, "singleLayerOnly", pEffectInfo.bAffectsSingleLayerOnly);
+                var effectParams = [];
+                for (var p = 0; p < pEffectInfo.pParams.length; p++) {
+                    var pParam = pEffectInfo.pParams[p];
+                    var param = {};
+                    param.__yyIsGMLObject = true;
+                    variable_struct_set(param, "name", pParam.pName);
+                    variable_struct_set(param, "values", pParam.defaults_data ? pParam.defaults_data.slice() : []);
+                    effectParams[p] = param;
+                } // end for
+                variable_struct_set(effectInfo, "effectParams", effectParams);
+                variable_struct_set(newLayer, "effectInfo", effectInfo);
+            } // end if
+
+            if (_layer_elements) {
+                var elements = [];
+                var elPool = pLayer.m_elements.pool;
+                for (var e = 0; e < elPool.length; e++) {
+                    var pEl = elPool[e];
+                    if (!pEl) continue;
+                    var element = {};
+                    element.__yyIsGMLObject = true;
+                    if (pEl.m_name) variable_struct_set(element, "name", pEl.m_name);
+                    variable_struct_set(element, "id", pEl.m_id);
+                    variable_struct_set(element, "type", pEl.m_type);
+                    switch (pEl.m_type) {
+                        case eLayerElementType_Background:
+                            var pB = pEl.m_pBackground;
+                            if (pB) {
+                                variable_struct_set(element, "visible", pB.visible);
+                                variable_struct_set(element, "sprite_index", MAKE_REF(REFID_SPRITE, pB.index));
+                                variable_struct_set(element, "htiled", pB.htiled);
+                                variable_struct_set(element, "vtiled", pB.vtiled);
+                                variable_struct_set(element, "xscale", pB.xscale);
+                                variable_struct_set(element, "yscale", pB.yscale);
+                                variable_struct_set(element, "stretch", pB.stretch);
+                                variable_struct_set(element, "blendColour", ConvertGMColour(pB.blend) & 0xffffff);
+                                variable_struct_set(element, "blendAlpha", pB.alpha);
+                                variable_struct_set(element, "image_index", pB.image_index);
+                                variable_struct_set(element, "image_speed", pB.image_speed);
+                                variable_struct_set(element, "speed_type", pB.playbackspeedtype);
+                            } // end if
+                            break;
+                        case eLayerElementType_Instance:
+                            variable_struct_set(element, "inst_id", MAKE_REF(REFID_INSTANCE, pEl.m_instanceID));
+                            break;
+                        case eLayerElementType_Sprite:
+                            variable_struct_set(element, "sprite_index", MAKE_REF(REFID_SPRITE, pEl.m_spriteIndex));
+                            variable_struct_set(element, "image_index", pEl.m_imageIndex);
+                            variable_struct_set(element, "image_speed", pEl.m_imageSpeed);
+                            variable_struct_set(element, "speed_type", pEl.m_playbackspeedtype);
+                            variable_struct_set(element, "image_xscale", pEl.m_imageScaleX);
+                            variable_struct_set(element, "image_yscale", pEl.m_imageScaleY);
+                            variable_struct_set(element, "image_angle", pEl.m_imageAngle);
+                            variable_struct_set(element, "image_blend", ConvertGMColour(pEl.m_imageBlend) & 0xffffff);
+                            variable_struct_set(element, "image_alpha", pEl.m_imageAlpha);
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            break;
+                        case eLayerElementType_Tilemap:
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            variable_struct_set(element, "width", pEl.m_mapWidth);
+                            variable_struct_set(element, "height", pEl.m_mapHeight);
+                            variable_struct_set(element, "data_mask", pEl.m_tiledataMask);
+                            variable_struct_set(element, "tileset_index", MAKE_REF(REFID_TILESET, pEl.m_backgroundIndex));
+                            if (_tilemap_data) {
+                                var count = pEl.m_mapWidth * pEl.m_mapHeight;
+                                var tiles = new Array(count);
+                                for (var t = 0; t < count; t++) {
+                                    var tv = pEl.m_pTiles[t];
+                                    tiles[t] = (tv === undefined) ? 0 : (tv >>> 0);
+                                } // end for
+                                variable_struct_set(element, "tiles", tiles);
+                            } // end if
+                            break;
+                        case eLayerElementType_ParticleSystem:
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            variable_struct_set(element, "ps", MAKE_REF(REFID_PARTICLESYSTEM, pEl.m_ps));
+                            variable_struct_set(element, "xscale", pEl.m_imageScaleX);
+                            variable_struct_set(element, "yscale", pEl.m_imageScaleY);
+                            variable_struct_set(element, "angle", pEl.m_imageAngle);
+                            variable_struct_set(element, "blend", ConvertGMColour(pEl.m_imageBlend) & 0xffffff);
+                            variable_struct_set(element, "alpha", pEl.m_imageAlpha);
+                            break;
+                        case eLayerElementType_Tile:
+                            variable_struct_set(element, "visible", pEl.m_visible);
+                            variable_struct_set(element, "sprite_index", MAKE_REF(REFID_SPRITE, pEl.m_index));
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            variable_struct_set(element, "width", pEl.m_w);
+                            variable_struct_set(element, "height", pEl.m_h);
+                            variable_struct_set(element, "image_xscale", pEl.m_imageScaleX);
+                            variable_struct_set(element, "image_yscale", pEl.m_imageScaleY);
+                            variable_struct_set(element, "image_angle", pEl.m_imageAngle);
+                            // tile element blends are stored as they are, the other element blends are stored converted (ConvertGMColour)
+                            variable_struct_set(element, "image_blend", pEl.m_imageBlend & 0xffffff);
+                            variable_struct_set(element, "image_alpha", pEl.m_imageAlpha);
+                            variable_struct_set(element, "xo", pEl.m_xo);
+                            variable_struct_set(element, "yo", pEl.m_yo);
+                            break;
+                        case eLayerElementType_Sequence:
+                            variable_struct_set(element, "seq_id", MAKE_REF(REFID_SEQUENCE, pEl.m_sequenceIndex));
+                            variable_struct_set(element, "image_speed", pEl.m_imageSpeed);
+                            variable_struct_set(element, "image_xscale", pEl.m_scaleX);
+                            variable_struct_set(element, "image_yscale", pEl.m_scaleY);
+                            variable_struct_set(element, "image_angle", pEl.m_angle);
+                            variable_struct_set(element, "image_blend", ConvertGMColour(pEl.m_imageBlend) & 0xffffff);
+                            variable_struct_set(element, "image_alpha", pEl.m_imageAlpha);
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            variable_struct_set(element, "head_position", pEl.m_headPosition);
+                            break;
+                        case eLayerElementType_Text:
+                            variable_struct_set(element, "x", pEl.m_x);
+                            variable_struct_set(element, "y", pEl.m_y);
+                            variable_struct_set(element, "font_index", MAKE_REF(REFID_FONT, pEl.m_fontIndex));
+                            variable_struct_set(element, "xscale", pEl.m_scaleX);
+                            variable_struct_set(element, "yscale", pEl.m_scaleY);
+                            variable_struct_set(element, "angle", pEl.m_angle);
+                            variable_struct_set(element, "blend", ConvertGMColour(pEl.m_blend) & 0xffffff);
+                            variable_struct_set(element, "alpha", pEl.m_alpha);
+                            variable_struct_set(element, "xorigin", pEl.m_originX);
+                            variable_struct_set(element, "yorigin", pEl.m_originY);
+                            variable_struct_set(element, "origin", pEl.m_origin);
+                            variable_struct_set(element, "text", pEl.m_text);
+                            variable_struct_set(element, "h_align", pEl.m_alignment & 0xff);
+                            variable_struct_set(element, "v_align", (pEl.m_alignment >> 8) & 0xff);
+                            variable_struct_set(element, "char_spacing", pEl.m_charSpacing);
+                            variable_struct_set(element, "line_spacing", pEl.m_lineSpacing);
+                            variable_struct_set(element, "paragraph_spacing", pEl.m_paragraphSpacing);
+                            variable_struct_set(element, "frame_width", pEl.m_frameW);
+                            variable_struct_set(element, "frame_height", pEl.m_frameH);
+                            variable_struct_set(element, "wrap", pEl.m_wrap);
+                            variable_struct_set(element, "wrap_mode", pEl.m_wrapMode);
+                            break;
+                    } // end switch
+                    elements.push(element);
+                } // end for
+                variable_struct_set(newLayer, "elements", elements);
+            } // end if
+            layers.push(newLayer);
+        } // end for
+        variable_struct_set(ret, "layers", layers);
+    } // end if
+
+    if (_instances) {
+        // the room editor placements, so instances that came from the room keep their creation code
+        var records = {};
+        if (pStorage.pInstances) {
+            for (var r = 0; r < pStorage.pInstances.length; r++) {
+                var rec = pStorage.pInstances[r];
+                if (rec) records[rec.id] = rec;
+            } // end for
+        } // end if
+
+        // the instances as they are now, active and deactivated, including ones created at runtime
+        var instances = [];
+        var lists = [pRoom.m_Active.pool, pRoom.m_Deactive.pool];
+        for (var li = 0; li < lists.length; li++) {
+            var pool = lists[li];
+            for (var n = 0; n < pool.length; n++) {
+                var pInst = pool[n];
+                if (!pInst || pInst.marked) continue;
+                var record = records[pInst.id];
+                var alpha = Math.round(pInst.image_alpha * 255);
+                alpha = (alpha < 0) ? 0 : ((alpha > 255) ? 255 : alpha);
+
+                var inst = {};
+                inst.__yyIsGMLObject = true;
+                variable_struct_set(inst, "x", pInst.x);
+                variable_struct_set(inst, "y", pInst.y);
+                // object_index/id cannot go through variable_struct_set (see g_instance_names)
+                inst.object_index = pInst.pObject ? pInst.pObject.Name : "";
+                inst.id = MAKE_REF(REFID_INSTANCE, pInst.id);
+                variable_struct_set(inst, "creation_code", (record && record.pCode) ? record.pCode : -1);
+                variable_struct_set(inst, "pre_creation_code", (record && record.pPreCreateCode) ? record.pPreCreateCode : -1);
+                variable_struct_set(inst, "xscale", pInst.image_xscale);
+                variable_struct_set(inst, "yscale", pInst.image_yscale);
+                variable_struct_set(inst, "image_speed", pInst.image_speed);
+                variable_struct_set(inst, "image_index", pInst.image_index);
+                // __image_blend is the colour as it was set, the image_blend getter converts it (swaps red and blue on the canvas renderer)
+                variable_struct_set(inst, "colour", ((alpha << 24) | (pInst.__image_blend & 0xffffff)) >>> 0);
+                variable_struct_set(inst, "angle", pInst.image_angle);
+                variable_struct_set(inst, "variables", _variables ? room_get_info_variables(pInst.pObject, record ? record.pPreCreateCode : null) : undefined);
+                instances.push(inst);
+            } // end for
+        } // end for
+        variable_struct_set(ret, "instances", instances);
+    } // end if
+
+    return ret;
+}
+
+// _live reports the room as it is now for the current room, or a persistent room that has been visited, otherwise the room as laid out in the room editor
+function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tilemap_data, _live, _variables)
 {
     var pRoom = g_pRoomManager.Get(yyGetInt32(_ind));
+    if ((pRoom !== null) && (_live ?? false) && ((pRoom === g_RunRoom) || (pRoom.m_persistent && pRoom.m_Initialised))) {
+        return room_get_info_live(pRoom, _views ?? true, _instances ?? true, _layers ?? true, _layer_elements ?? true, _tilemap_data ?? true, _variables ?? false);
+    } // end if
     var ret = {};
     ret.__yyIsGMLObject = true;
     if ((pRoom !== null) && (pRoom.m_pStorage !== undefined) && (pRoom.m_pStorage !== null)) {
@@ -94219,6 +94911,7 @@ function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tile
         _layers = _layers ?? true;
         _layer_elements = _layer_elements ?? true;
         _tilemap_data = _tilemap_data ?? true;
+        _variables = _variables ?? false;
 
         var pStorage = pRoom.m_pStorage;
         variable_struct_set(ret, "width", pStorage.width ? pStorage.width : 1024);
@@ -94290,8 +94983,11 @@ function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tile
             //unsafe fixes
 			inst.object_index = pObj.Name;
             inst.id = sourceInstance.id;
+                    
+                    //for some reason room instances now internally use the "rotation" variable, instead of angle
+                    variable_struct_set(inst, "angle", sourceInstance.rotation ? sourceInstance.rotation : 0);
+                    //variable_struct_set(inst, "angle", sourceInstance.angle ? sourceInstance.angle : 0);
 
-                    variable_struct_set(inst, "angle", sourceInstance.angle ? sourceInstance.angle : 0);
                     variable_struct_set(inst, "xscale", sourceInstance.scaleX ? sourceInstance.scaleX : 1);
                     variable_struct_set(inst, "yscale", sourceInstance.scaleY ? sourceInstance.scaleY : 1);
                     variable_struct_set(inst, "image_speed", sourceInstance.imageSpeed ? sourceInstance.imageSpeed : 1);
@@ -94299,6 +94995,9 @@ function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tile
                     variable_struct_set(inst, "colour", sourceInstance.image_blend ? sourceInstance.image_blend : 0x00ffffff);
                     variable_struct_set(inst, "creation_code", sourceInstance.pCode ? sourceInstance.pCode : -1);
                     variable_struct_set(inst, "pre_creation_code", sourceInstance.pPreCreateCode ? sourceInstance.pPreCreateCode : -1);
+
+                    // the variable definitions this instance will be created with, undefined if they were not asked for or there are none
+                    variable_struct_set(inst, "variables", _variables ? room_get_info_variables(pObj, sourceInstance.pPreCreateCode) : undefined);
                     instances[i] = inst;
                 } // end if
             } // end for     
@@ -94331,7 +95030,7 @@ function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tile
 
                     // Copy effect properties
                     // @if feature("layerEffects")
-                    effectParams = new Array( sourceLayer.effectProperties.length );
+                    var effectParams = new Array( sourceLayer.effectProperties.length );
 
                     var effectPropIdx;
                     for (effectPropIdx = 0; effectPropIdx < sourceLayer.effectProperties.length; effectPropIdx++) 
@@ -94464,7 +95163,7 @@ function room_get_info(_ind, _views, _instances, _layers, _layer_elements, _tile
                                 } // end for                                
 
                                 // Particles
-                                for (assetIdx = 0; i < sourceLayer.particles.length; assetIdx++)
+                                for (assetIdx = 0; assetIdx < sourceLayer.particles.length; assetIdx++)
                                 {
                                     var srcParticle = sourceLayer.particles[assetIdx];
                                     var element = {};
@@ -98580,7 +99279,8 @@ function layer_particle_get_blend(_paricle_element_id)
     var el = layerParticleGetElement(_paricle_element_id);
     if (el != null)
     {
-        return el.m_imageBlend;
+        // stored converted (layer_particle_blend and room loading), so convert it back as the other layer_*_get_blend do
+        return ConvertGMColour(el.m_imageBlend);
     }
     return 0;
 }
@@ -99444,22 +100144,22 @@ function tilemap_set( arg1,arg2,arg3,arg4)
         if(arg3<0)
         {
             debug("tilemap_set_tile called with negative x coord, fails");
-            return;
+            return false;
         }
         if(arg4<0)
         {
             debug("tilemap_set_tile called with negative y coord, fails");
-            return;
+            return false;
         }
         if(arg3>=el.m_mapWidth)
         {
             debug("tilemap_set_tile called with x coord greater than map width, fails");
-            return;
+            return false;
         }
         if(arg4>=el.m_mapHeight)
         {
             debug("tilemap_set_tile called with y coord greater than map height, fails");
-            return;
+            return false;
         }
         
         var x = arg3;
@@ -99471,13 +100171,15 @@ function tilemap_set( arg1,arg2,arg3,arg4)
 		if (back != null && tileindex >= back.tilecount)
 		{
 			debug("layer_tilemap_set_tile() - tile index outside tile set count");
-			return;
+			return false;
 		}
 
 		// Replace the tile data at this location
 		var index = (y * el.m_mapWidth) + x;
-		el.m_pTiles[index] = tileindexdata;		
-    } 
+		el.m_pTiles[index] = tileindexdata;
+		return true;
+    }
+    return false;
 
 };
 
@@ -99494,7 +100196,7 @@ function tilemap_set_at_pixel( arg1,arg2,arg3,arg4)
     var room = g_pLayerManager.GetTargetRoomObj();
     var ret = g_pLayerManager.GetElementAndLayerFromID(room, yyGetInt32(arg1));
 
-    if (ret == null) return -1;
+    if (ret == null) return false;
     
     
     var el = ret.element;
@@ -99524,15 +100226,15 @@ function tilemap_set_at_pixel( arg1,arg2,arg3,arg4)
         y-= tmapoffy;
         
         if(x<0)
-            return -1;
+            return false;
             
         if(y<0)
-            return -1;
+            return false;
             
         if(x>=tmpw)
-            return -1;
-        if(y>tmph)
-            return -1;
+            return false;
+        if(y>=tmph)
+            return false;
 
         var indexX = Math.floor(x*rcptw);
         var indexY = Math.floor(y*rcpth);
@@ -99548,10 +100250,12 @@ function tilemap_set_at_pixel( arg1,arg2,arg3,arg4)
 		if (back != null && tileindex >= back.tilecount)
 		{
 			debug("tilemap_set_tile_at_pixel() - tile index outside tile set count");
-			return;
+			return false;
 		}
-		el.m_pTiles[index] = tileindexdata;		
-    } 
+		el.m_pTiles[index] = tileindexdata;
+		return true;
+    }
+    return false;
 
 };
 
@@ -99806,7 +100510,7 @@ function tilemap_get( arg1,arg2,arg3)
     var room = g_pLayerManager.GetTargetRoomObj();
 
     if (room == null) {
-        return 0;
+        return -1;
     }
 
     var el = g_pLayerManager.GetElementFromID(room, yyGetInt32(arg1));
@@ -99815,22 +100519,22 @@ function tilemap_get( arg1,arg2,arg3)
         if(arg2<0)
         {
             debug("tilemap_get_tile called with negative x coord, fails");
-            return;
+            return -1;
         }
         if(arg3<0)
         {
             debug("tilemap_get_tile called with negative y coord, fails");
-            return;
+            return -1;
         }
         if(arg2>=el.m_mapWidth)
         {
             debug("tilemap_get_tile called with x coord greater than map width, fails");
-            return;
+            return -1;
         }
         if(arg3>=el.m_mapHeight)
         {
             debug("tilemap_get_tile called with y coord greater than map height, fails");
-            return;
+            return -1;
         }
                 
 		// Replace the tile data at this location
@@ -99883,7 +100587,7 @@ function tilemap_get_at_pixel( arg1,arg2,arg3)
             
         if(x>=tmpw)
             return -1;
-        if(y>tmph)
+        if(y>=tmph)
             return -1;
 
         var indexX = Math.floor(x*rcptw);
@@ -100726,7 +101430,15 @@ function layer_sequence_get_instance(sequence_element_id)
 
 function layer_sequence_create(layer_id, posx, posy, sequence_id)
 {
-    sequence_id = yyGetInt32(sequence_id);
+    // A sequence from sequence_create() is a struct, so look up its index
+    if (sequence_id instanceof yySequence)
+    {
+        sequence_id = g_pSequenceManager.Sequences.indexOf(sequence_id);
+    }
+    else
+    {
+        sequence_id = yyGetInt32(sequence_id);
+    }
 
     var room = g_pLayerManager.GetTargetRoomObj();
 
@@ -101068,6 +101780,24 @@ function layer_sequence_get_yscale(sequence_element_id)
     if (el != null)
     {
         return el.m_scaleY;
+    }
+
+    return -1;
+};
+
+function layer_sequence_get_alpha(sequence_element_id) {
+    var el = layerSequenceGetInstance(yyGetInt32(sequence_element_id));
+    if (el != null) {
+        return el.m_imageAlpha;
+    }
+
+    return -1;
+};
+
+function layer_sequence_get_blend(sequence_element_id) {
+    var el = layerSequenceGetInstance(yyGetInt32(sequence_element_id));
+    if (el != null) {
+        return ConvertGMColour(el.m_imageBlend);
     }
 
     return -1;
@@ -106175,7 +106905,7 @@ function draw_surface_ext(_id,_x,_y,_xscale,_yscale,_rot,_color,_alpha)
     if (!pSurf) return;
 
     var c = ConvertGMColour(yyGetInt32(_color));
-	Graphics_TextureDraw(pSurf.m_pTPE, 0, 0, yyGetReal(_x), yyGetReal(_y), yyGetReal(_xscale), yyGetReal(_yscale), (yyGetReal(_rot) * 0.0174532925), c,c,c,c, yyGetReal(_alpha));
+	Graphics_TextureDraw(pSurf.m_pTPE, 0, 0, yyGetReal(_x), yyGetReal(_y), yyGetReal(_xscale), yyGetReal(_yscale), (yyGetReal(_rot) * Pi / 180.0), c,c,c,c, yyGetReal(_alpha));
 }
 
 // #############################################################################################
@@ -106367,12 +107097,12 @@ function draw_surface_general(_id,_left,_top,_width,_height,_x,_y,_xscale,_yscal
         {
         	pTPE.singleimage = pSurf;
         	pTPE.texture = pSurf;
-        	Graphics_TextureDraw(pTPE, 0, 0, _x, _y, _xscale, _yscale, (_rot * 0.0174532925), _c1,_c2,_c3,_c4, _alpha);
+        	Graphics_TextureDraw(pTPE, 0, 0, _x, _y, _xscale, _yscale, (_rot * Pi / 180.0), _c1,_c2,_c3,_c4, _alpha);
         } else
         {
         	pTPE.singleimage = pSurf.texture;
         	pTPE.texture = pSurf.texture;
-        	Graphics_TextureDraw(pTPE, 0, 0, _x, _y, _xscale, _yscale, (_rot * 0.0174532925), _c1, _c2, _c3, _c4, _alpha);
+        	Graphics_TextureDraw(pTPE, 0, 0, _x, _y, _xscale, _yscale, (_rot * Pi / 180.0), _c1, _c2, _c3, _c4, _alpha);
         }
     }     
 }
@@ -178041,7 +178771,7 @@ UILayerInstanceElement.prototype.create_element = function(target_layer, run_ins
 	instance.image_speed = this.instanceImageSpeed;
 	instance.image_index = this.instanceImageIndex;
 	instance.sequence_pos = instance.last_sequence_pos = this.instanceImageIndex;
-	instance.image_blend = ConvertGMColour(this.instanceColour & 0xffffff);
+	instance.image_blend = this.instanceColour & 0xffffff;
 	instance.image_alpha = ((this.instanceColour >> 24) & 0xff) / 255.0;
 	instance.image_angle = this.instanceAngle;
 
