@@ -1,16 +1,30 @@
 # Bundled HTML5 runtime
 
-`scripts/runner.js` used to inject 158 runtime scripts. It now loads one file:
-`scripts/runtime.bundle.js`.
+`scripts/runner.js` loads the runtime bundle, followed by the custom RAF
+scheduler. The manifest preserves the order of all 158 upstream scripts.
 
-This removes the large per-request latency cost before `GameMaker_Init()` can
-create the GameMaker loading screen. Script order is kept exactly as it was in
-the original runner.
+To regenerate the compact bundle after changing a source file:
 
-To regenerate the bundle after changing runtime scripts, run:
-
-```bash
+```sh
+npm ci --ignore-scripts
 node scripts/build-runtime-bundle.js
+node --check scripts/runtime.bundle.js
 ```
 
-The original load order is retained in `scripts/runtime.bundle.manifest.json`.
+The build uses the locked Terser version with compression and name mangling
+disabled. It retains runtime globals, compiler directives and license
+notices. Use `node scripts/build-runtime-bundle.js --readable` to temporarily
+generate a bundle with source boundaries and comments for debugging.
+
+In an HTML5 export that loads `scripts/runner.js`, add these hints to the
+document head to let the browser discover both scripts while it downloads
+the game code. Use the same URLs as the runner.
+
+```html
+<link rel="preload" as="script" href="scripts/runtime.bundle.js">
+<link rel="preload" as="script" href="scripts/runtime.frame-scheduler-patch.js">
+```
+
+The regular script tags still control execution order. Plain JavaScript
+works on static hosts. If your server supports HTTP compression, serve the
+same URLs with Brotli or gzip negotiated through `Accept-Encoding`.
