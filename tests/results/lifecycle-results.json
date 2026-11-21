@@ -1,0 +1,60 @@
+{
+  "browser": "140.0.7339.0",
+  "frames": 120,
+  "warmup": 60,
+  "repeats": 1,
+  "scenarios": "combined",
+  "profiles": [
+    "desktop"
+  ],
+  "measurements": [
+    {
+      "variant": "updated",
+      "profile": "desktop",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "combined",
+          "frames": 120,
+          "wallMs": 1982.6999999999534,
+          "fps": 60.046422444241195,
+          "low1": 41.15226337460388,
+          "interval": {
+            "mean": 16.653781512605434,
+            "p50": 16.699999999953434,
+            "p95": 18.100000000093132,
+            "p99": 19,
+            "max": 29.5999999998603
+          },
+          "work": {
+            "mean": 1.0083333333372138,
+            "p50": 1,
+            "p95": 1.3999999999068677,
+            "p99": 3.0999999998603016,
+            "max": 6
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 123344.4,
+          "heapBytes": 30379719,
+          "audioBursts": 5,
+          "particleCount": 708,
+          "framebuffer": {
+            "hash": "f957a936",
+            "nonuniformPixels": 299032
+          },
+          "glError": 0,
+          "gcMs": 4.247,
+          "gcCount": 5,
+          "callbackThreadMsPerFrame": 1.1750333333333332
+        }
+      ]
+    }
+  ]
+}

@@ -28,3 +28,7 @@ the game code. Use the same URLs as the runner.
 The regular script tags still control execution order. Plain JavaScript
 works on static hosts. If your server supports HTTP compression, serve the
 same URLs with Brotli or gzip negotiated through `Accept-Encoding`.
+
+Install the complete `scripts/` directory together. The frame scheduler uses
+the hook in the bundled `animate()` entry point. The bootstrap loads the
+bundle first and the matching scheduler second.

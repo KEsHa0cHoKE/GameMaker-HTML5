@@ -409,6 +409,7 @@ function min3(_a,_b,_c){ return min(_a,_b,_c); }
 
 
 var state = []; 					// initialize state to random bits
+var extendedRandomState = new Uint32Array(16);
 var g_RndIndex = 0;						// reset anyway
 var g_nRandSeed = InitRandom(0);	// init should also reset this to 0
 var g_nRandomPoly = 0xDA442D24;
@@ -437,15 +438,15 @@ function InitRandom( _seed ) {
 }
 
 function InitRandomExt( _seed ) {
-    var s = BigInt(_seed);
-    for (var i = 0; i < 16; i++)
+    var s = _seed;
+    for (var i = 0; i < extendedRandomState.length; i++)
     {
-        s = ((s * BigInt(214013) + BigInt(2531011)) & BigInt(0x7fffffff) );
-        state[i] = s; //i ;
+        s = (Math.imul(s, 214013) + 2531011) & 0x7fffffff;
+        extendedRandomState[i] = s;
     }
     g_RndIndex = 0;
     g_nRandSeed = _seed;
-    rand = randBigInt;
+    rand = randExtended;
     return g_nRandSeed;
 }
 
@@ -488,41 +489,22 @@ function randReal() {
     return ((state[g_RndIndex] & 0x7fffffff) / 2147483647.0);        // between 0 and 1
   }
 
-function randBigInt() {
-
-//	return Math.random();
-
-    var a, b, c, d;
-    a = state[g_RndIndex];
-    c = state[(g_RndIndex + 13) & 15];
-    b = a^c^(a<<BigInt(16))^(c<<BigInt(15));
-    c = state[(g_RndIndex + 9) & 15];
-    c ^= (c>>BigInt(11));
-    // Both writes must wrap to a 32-bit word. A later tap shifts this word right,
-    // so masking only the output lets the state grow with each call.
-    a = state[g_RndIndex] = (b ^ c) & BigInt(0xffffffff);
-    d = a ^ ((a << BigInt(5)) & BigInt(g_nRandomPoly));
+function randExtended() {
+    var words = extendedRandomState;
+    var a = words[g_RndIndex];
+    var c = words[(g_RndIndex + 13) & 15];
+    var b = a ^ c ^ (a << 16) ^ (c << 15);
+    c = words[(g_RndIndex + 9) & 15];
+    c ^= c >>> 11;
+    // Both stores wrap to 32 bits. The tap above must shift the word as unsigned.
+    a = b ^ c;
+    words[g_RndIndex] = a;
+    var d = a ^ ((a << 5) & g_nRandomPoly);
     g_RndIndex = (g_RndIndex + 15) & 15;
-    a = state[g_RndIndex];
-    state[g_RndIndex] = (a ^ b ^ d ^ (a << BigInt(2)) ^ (b << BigInt(18)) ^ (c << BigInt(28))) & BigInt(0xffffffff);
-    return (Number(state[g_RndIndex] & BigInt(0x7fffffff)) / 2147483647.0); 		// between 0 and 1
-  }
-
-
-// #############################################################################################
-/// Function:<summary>
-///          	Returns a random real number between 0 and x. The number is always smaller than x.
-///          </summary>
-///
-/// In:		<param name="_v"></param>
-/// Out:	<returns>
-///				
-///			</returns>
-// #############################################################################################
-function random(_v)
-{
-	var r = rand();
-	return r * yyGetReal(_v);
+    a = words[g_RndIndex];
+    var result = a ^ b ^ d ^ (a << 2) ^ (b << 18) ^ (c << 28);
+    words[g_RndIndex] = result;
+    return (result & 0x7fffffff) / 2147483647.0;
 }
 
 

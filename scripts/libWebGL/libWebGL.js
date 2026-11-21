@@ -904,6 +904,11 @@ function yyWebGL(_canvas, _options) {
     ///          </summary>
     // #############################################################################################        
     /** @this {yyWebGL} */
+    this.SetLights = function (_pointLights, _dirLights, _lightColours) {
+        m_VBufferManager.Flush();
+        m_CommandBuilder.SetLights(_pointLights, _dirLights, _lightColours);
+    };
+
     this.SetLight = function (_ind, _pointLightData, _dirLightData, _lightColourData) {
     
         m_VBufferManager.Flush();

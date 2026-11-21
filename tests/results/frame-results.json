@@ -1,0 +1,5288 @@
+{
+  "browser": "140.0.7339.0",
+  "frames": 90,
+  "warmup": 55,
+  "repeats": 3,
+  "scenarios": "menu,songs,tiles,burst,expiry,combined,rooms,resources",
+  "profiles": [
+    "desktop",
+    "cpu4",
+    "mobile"
+  ],
+  "measurements": [
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.5999999999767,
+          "fps": 60.00134834490945,
+          "low1": 39.68253968242969,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 25.20000000006985,
+            "max": 25.20000000006985
+          },
+          "work": {
+            "mean": 0.23555555556021218,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 2.099999999976717,
+            "max": 2.099999999976717
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26261361,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 1.226,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 0.49620000000000003
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1484,
+          "fps": 59.99730349197695,
+          "low1": 51.81347150277819,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 19.29999999993015,
+            "max": 19.29999999993015
+          },
+          "work": {
+            "mean": 0.2677777777762256,
+            "p50": 0.2000000000698492,
+            "p95": 0.5,
+            "p99": 2.400000000023283,
+            "max": 2.400000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27473973,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 1.556,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.3801333333333334
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1484.8000000000466,
+          "fps": 59.96092434143853,
+          "low1": 56.179775280751905,
+          "interval": {
+            "mean": 16.677528089888163,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 17.800000000046566,
+            "max": 17.800000000046566
+          },
+          "work": {
+            "mean": 0.2011111111069719,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 1.2999999999301508,
+            "max": 1.2999999999301508
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28513721,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0.894,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.34526666666666656
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1488.5,
+          "fps": 60.00134834490474,
+          "low1": 38.75968992258556,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 25.79999999993015,
+            "max": 25.79999999993015
+          },
+          "work": {
+            "mean": 6.744444444436684,
+            "p50": 5.199999999953434,
+            "p95": 14.199999999953434,
+            "p99": 25.199999999953434,
+            "max": 25.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 30723444,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 30.124999999999996,
+          "gcCount": 30,
+          "callbackThreadMsPerFrame": 5.307722222222221
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1491.0999999999767,
+          "fps": 60.00134834490945,
+          "low1": 47.84688995209981,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 20.900000000023283,
+            "max": 20.900000000023283
+          },
+          "work": {
+            "mean": 9.60222222223076,
+            "p50": 9.400000000023283,
+            "p95": 12.800000000046566,
+            "p99": 20.5,
+            "max": 20.5
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 35478458,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 39.461,
+          "gcCount": 39,
+          "callbackThreadMsPerFrame": 9.556600000000003
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484.9000000000233,
+          "fps": 59.99730349197695,
+          "low1": 45.24886877808986,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 17.199999999953434,
+            "p99": 22.100000000093132,
+            "max": 22.100000000093132
+          },
+          "work": {
+            "mean": 1.2433333333297116,
+            "p50": 1.1999999999534339,
+            "p95": 2.199999999953434,
+            "p99": 2.599999999976717,
+            "max": 2.599999999976717
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 36283802,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0.716,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.2870222222222218
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.8000000000466,
+          "fps": 60.00134834490474,
+          "low1": 50.76142131961697,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17.199999999953434,
+            "p99": 19.70000000006985,
+            "max": 19.70000000006985
+          },
+          "work": {
+            "mean": 0.6444444444470314,
+            "p50": 0.5999999999767169,
+            "p95": 1.400000000023283,
+            "p99": 1.7999999999301508,
+            "max": 1.7999999999301508
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 49993946,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.7715000000000002
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490474,
+          "low1": 59.171597633054574,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 16.79999999993015,
+            "p99": 16.900000000023283,
+            "max": 16.900000000023283
+          },
+          "work": {
+            "mean": 0.22555555556124698,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 0.40000000002328306,
+            "max": 0.40000000002328306
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 55319470,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.4125111111111112
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "desktop",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.4000000000233,
+          "fps": 60.009439687138034,
+          "low1": 52.3560209424722,
+          "interval": {
+            "mean": 16.66404494382127,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 19.099999999976717,
+            "max": 19.099999999976717
+          },
+          "work": {
+            "mean": 0.1799999999994826,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 0.8000000000465661,
+            "max": 0.8000000000465661
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26687305,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0.791,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.35796666666666666
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490945,
+          "low1": 57.47126436773919,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 17.400000000023283,
+            "max": 17.400000000023283
+          },
+          "work": {
+            "mean": 0.25666666666640797,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 2.5,
+            "max": 2.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27560249,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 1.303,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.38494444444444453
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.0999999999767,
+          "fps": 60.01348617666891,
+          "low1": 39.68253968261301,
+          "interval": {
+            "mean": 16.662921348314608,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 25.199999999953434,
+            "max": 25.199999999953434
+          },
+          "work": {
+            "mean": 0.20999999999508467,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 2.300000000046566,
+            "max": 2.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29597293,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.3392333333333332
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1484.3000000000466,
+          "fps": 60.00943968714274,
+          "low1": 53.76344086028235,
+          "interval": {
+            "mean": 16.664044943819963,
+            "p50": 16.699999999953434,
+            "p95": 17.300000000046566,
+            "p99": 18.599999999976717,
+            "max": 18.599999999976717
+          },
+          "work": {
+            "mean": 1.506666666668995,
+            "p50": 1.3000000000465661,
+            "p95": 2.099999999976717,
+            "p99": 12.70000000006985,
+            "max": 12.70000000006985
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 28921340,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 39.76,
+          "gcCount": 13,
+          "callbackThreadMsPerFrame": 1.5760777777777781
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1485.8000000000466,
+          "fps": 59.99730349197695,
+          "low1": 54.64480874337797,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 18.29999999993015,
+            "max": 18.29999999993015
+          },
+          "work": {
+            "mean": 1.649999999997413,
+            "p50": 1.400000000023283,
+            "p95": 3.199999999953434,
+            "p99": 6,
+            "max": 6
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 34264672,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 9.447000000000003,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 1.5422666666666665
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484.2999999999302,
+          "fps": 60.00134834490945,
+          "low1": 47.1698113205993,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 21.20000000006985,
+            "max": 21.20000000006985
+          },
+          "work": {
+            "mean": 0.8922222222227396,
+            "p50": 0.8000000000465661,
+            "p95": 1.2000000000698492,
+            "p99": 4,
+            "max": 4
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 30441232,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 4.178,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 0.971622222222222
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1484,
+          "fps": 59.98921542194285,
+          "low1": 56.49717514101999,
+          "interval": {
+            "mean": 16.66966292134936,
+            "p50": 16.699999999953434,
+            "p95": 16.899999999906868,
+            "p99": 17.70000000006985,
+            "max": 17.70000000006985
+          },
+          "work": {
+            "mean": 0.5155555555532273,
+            "p50": 0.5,
+            "p95": 0.8999999999068677,
+            "p99": 2.5,
+            "max": 2.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 33743820,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 4.968,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.566911111111111
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.2999999999302,
+          "fps": 60.00539374325971,
+          "low1": 59.17159763346218,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 16.899999999906868,
+            "max": 16.899999999906868
+          },
+          "work": {
+            "mean": 0.19222222222015262,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 0.6999999999534339,
+            "max": 0.6999999999534339
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 31863200,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 1.045,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.3587222222222223
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "desktop",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490474,
+          "low1": 40.32258064527486,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 24.79999999993015,
+            "max": 24.79999999993015
+          },
+          "work": {
+            "mean": 0.2011111111134394,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 0.5,
+            "max": 0.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26604285,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 1.709,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.3611888888888889
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.2999999999302,
+          "fps": 60.00539374325971,
+          "low1": 52.3560209424722,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 19.099999999976717,
+            "max": 19.099999999976717
+          },
+          "work": {
+            "mean": 0.28666666665942303,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 5.599999999976717,
+            "max": 5.599999999976717
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27059813,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.366,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.4331777777777778
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1500.1999999999534,
+          "fps": 59.33333333333333,
+          "low1": 26.881720430141176,
+          "interval": {
+            "mean": 16.853932584269664,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 37.199999999953434,
+            "max": 37.199999999953434
+          },
+          "work": {
+            "mean": 0.1488888888956151,
+            "p50": 0.10000000009313226,
+            "p95": 0.30000000004656613,
+            "p99": 0.6999999999534339,
+            "max": 0.6999999999534339
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28246213,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 1.663,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.28316666666666673
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1490.3000000000466,
+          "fps": 59.84802636002584,
+          "low1": 48.54368932016889,
+          "interval": {
+            "mean": 16.70898876404599,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 20.600000000093132,
+            "max": 20.600000000093132
+          },
+          "work": {
+            "mean": 1.6111111111098175,
+            "p50": 1.400000000023283,
+            "p95": 3,
+            "p99": 7.799999999930151,
+            "max": 7.799999999930151
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 32420804,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 22.581,
+          "gcCount": 11,
+          "callbackThreadMsPerFrame": 1.550244444444445
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1484.7999999999302,
+          "fps": 60.00134834490945,
+          "low1": 54.34782608688775,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 18.400000000023283,
+            "max": 18.400000000023283
+          },
+          "work": {
+            "mean": 1.2288888888912173,
+            "p50": 1.1999999999534339,
+            "p95": 1.900000000023283,
+            "p99": 2.599999999976717,
+            "max": 2.599999999976717
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 30601296,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 6.354000000000001,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 1.2505666666666673
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484.3000000000466,
+          "fps": 60.00539374325971,
+          "low1": 47.39336492896225,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 17.300000000046566,
+            "p99": 21.099999999976717,
+            "max": 21.099999999976717
+          },
+          "work": {
+            "mean": 1.0588888888919934,
+            "p50": 0.9000000000232831,
+            "p95": 1.599999999976717,
+            "p99": 9.29999999993015,
+            "max": 9.29999999993015
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 28580276,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 2.061,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.1209888888888886
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.0999999999767,
+          "fps": 60.02562892021501,
+          "low1": 53.191489361899755,
+          "interval": {
+            "mean": 16.65955056179723,
+            "p50": 16.699999999953434,
+            "p95": 17.099999999976717,
+            "p99": 18.79999999993015,
+            "max": 18.79999999993015
+          },
+          "work": {
+            "mean": 0.5311111111142155,
+            "p50": 0.40000000002328306,
+            "p95": 0.7999999999301508,
+            "p99": 8.400000000023283,
+            "max": 8.400000000023283
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 31730500,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0.496,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.696111111111111
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.4000000000233,
+          "fps": 60.00539374325499,
+          "low1": 54.054054054054056,
+          "interval": {
+            "mean": 16.66516853932663,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 18.5,
+            "max": 18.5
+          },
+          "work": {
+            "mean": 0.24333333332841803,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 0.5999999999767169,
+            "max": 0.5999999999767169
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 36426844,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.46416666666666656
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.2999999999302,
+          "fps": 60.00539374325971,
+          "low1": 57.142857142857146,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 17.5,
+            "max": 17.5
+          },
+          "work": {
+            "mean": 0.20444444443952914,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 0.9000000000232831,
+            "max": 0.9000000000232831
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25337424,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 8.818,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 0.3928999999999999
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490945,
+          "low1": 49.50495049487832,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 20.20000000006985,
+            "max": 20.20000000006985
+          },
+          "work": {
+            "mean": 0.3888888888888889,
+            "p50": 0.2000000000698492,
+            "p95": 0.8000000000465661,
+            "p99": 4.199999999953434,
+            "max": 4.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27105064,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.414,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.5540222222222222
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.7999999999302,
+          "fps": 59.989215421947556,
+          "low1": 40.816326530612244,
+          "interval": {
+            "mean": 16.669662921348053,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 24.5,
+            "max": 24.5
+          },
+          "work": {
+            "mean": 0.19111111110800671,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 1.3999999999068677,
+            "max": 1.3999999999068677
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28114176,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0.314,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.3372777777777777
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1486.0999999999767,
+          "fps": 60.00134834490474,
+          "low1": 35.21126760574927,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 19.599999999976717,
+            "p99": 28.399999999906868,
+            "max": 28.399999999906868
+          },
+          "work": {
+            "mean": 5.667777777778813,
+            "p50": 5,
+            "p95": 9.599999999976717,
+            "p99": 12.599999999976717,
+            "max": 12.599999999976717
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 38108704,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 32.12799999999999,
+          "gcCount": 26,
+          "callbackThreadMsPerFrame": 4.814788888888886
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1492.8000000000466,
+          "fps": 60.00134834490474,
+          "low1": 57.142857142857146,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 17.5,
+            "max": 17.5
+          },
+          "work": {
+            "mean": 9.67000000000181,
+            "p50": 9.5,
+            "p95": 11.70000000006985,
+            "p99": 13.70000000006985,
+            "max": 13.70000000006985
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 44884312,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 44.629000000000005,
+          "gcCount": 39,
+          "callbackThreadMsPerFrame": 9.658388888888888
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1485.5999999999767,
+          "fps": 59.97304582210242,
+          "low1": 44.84304932749472,
+          "interval": {
+            "mean": 16.674157303370787,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 22.29999999993015,
+            "max": 22.29999999993015
+          },
+          "work": {
+            "mean": 1.44444444446126,
+            "p50": 1.2000000000698492,
+            "p95": 2.199999999953434,
+            "p99": 9.400000000023283,
+            "max": 9.400000000023283
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 45680388,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0.721,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.451988888888889
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1495.7999999999302,
+          "fps": 59.56364609824841,
+          "low1": 40,
+          "interval": {
+            "mean": 16.788764044943296,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 25,
+            "max": 25
+          },
+          "work": {
+            "mean": 0.6644444444410813,
+            "p50": 0.5,
+            "p95": 1.400000000023283,
+            "p99": 5.5,
+            "max": 5.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 59384092,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.8051000000000004
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.4000000000233,
+          "fps": 60.00539374325971,
+          "low1": 45.66210045657246,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 21.900000000023283,
+            "max": 21.900000000023283
+          },
+          "work": {
+            "mean": 0.231111111112922,
+            "p50": 0.19999999995343387,
+            "p95": 0.5,
+            "p99": 0.8000000000465661,
+            "max": 0.8000000000465661
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 25580572,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 5.169,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 0.4372666666666666
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 59.99730349197695,
+          "low1": 56.81818181788116,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 17.600000000093132,
+            "max": 17.600000000093132
+          },
+          "work": {
+            "mean": 0.2266666666759799,
+            "p50": 0.2000000000698492,
+            "p95": 0.39999999990686774,
+            "p99": 0.5,
+            "max": 0.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26070705,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 3.1830000000000003,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 0.4267333333333334
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490945,
+          "low1": 52.3560209424722,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 19.099999999976717,
+            "max": 19.099999999976717
+          },
+          "work": {
+            "mean": 0.2577777777785539,
+            "p50": 0.2000000000698492,
+            "p95": 0.5,
+            "p99": 0.7999999999301508,
+            "max": 0.7999999999301508
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27870665,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.346,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.657411111111111
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 59.99730349197695,
+          "low1": 40.650406504103515,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 17.400000000023283,
+            "p99": 24.599999999976717,
+            "max": 24.599999999976717
+          },
+          "work": {
+            "mean": 0.3277777777790713,
+            "p50": 0.2000000000698492,
+            "p95": 1,
+            "p99": 3.400000000023283,
+            "max": 3.400000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28954743,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 2.948,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.47725555555555566
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1488.1000000000931,
+          "fps": 60.00134834490474,
+          "low1": 34.96503496506343,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.600000000093132,
+            "p95": 18.600000000093132,
+            "p99": 28.599999999976717,
+            "max": 28.599999999976717
+          },
+          "work": {
+            "mean": 6.532222222218601,
+            "p50": 5.199999999953434,
+            "p95": 10.900000000023283,
+            "p99": 28.199999999953434,
+            "max": 28.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 37845718,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 31.811,
+          "gcCount": 30,
+          "callbackThreadMsPerFrame": 5.0437444444444415
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1492.5,
+          "fps": 60.00134834490945,
+          "low1": 49.261083743729365,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 20.300000000046566,
+            "max": 20.300000000046566
+          },
+          "work": {
+            "mean": 9.67777777777519,
+            "p50": 9.599999999976717,
+            "p95": 11.099999999976717,
+            "p99": 19.599999999976717,
+            "max": 19.599999999976717
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 40714238,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 40.620999999999995,
+          "gcCount": 39,
+          "callbackThreadMsPerFrame": 9.499411111111115
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484.5,
+          "fps": 60.00539374325499,
+          "low1": 56.49717514139157,
+          "interval": {
+            "mean": 16.66516853932663,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 17.699999999953434,
+            "max": 17.699999999953434
+          },
+          "work": {
+            "mean": 1.1744444444529816,
+            "p50": 1.099999999976717,
+            "p95": 2.1000000000931323,
+            "p99": 3.400000000023283,
+            "max": 3.400000000023283
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 41480226,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 4.362,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.3031111111111113
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.6999999999534,
+          "fps": 60.00134834490474,
+          "low1": 59.52380952364454,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 16.800000000046566,
+            "max": 16.800000000046566
+          },
+          "work": {
+            "mean": 0.5033333333299702,
+            "p50": 0.5,
+            "p95": 0.7000000000698492,
+            "p99": 1.599999999976717,
+            "max": 1.599999999976717
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 55188486,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.6265444444444448
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.9000000000233,
+          "fps": 59.99325918436131,
+          "low1": 37.593984962438924,
+          "interval": {
+            "mean": 16.668539325842698,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 26.599999999976717,
+            "max": 26.599999999976717
+          },
+          "work": {
+            "mean": 0.25555555555426207,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 1,
+            "max": 1
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 33524590,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.43142222222222215
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "desktop",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.3000000000466,
+          "fps": 60.00539374325971,
+          "low1": 29.761904761925386,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 33.59999999997672,
+            "max": 33.59999999997672
+          },
+          "work": {
+            "mean": 0.2399999999971543,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 2.900000000023283,
+            "max": 2.900000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26760592,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 1.049,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.49438888888888877
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.5,
+          "fps": 60.00134834490474,
+          "low1": 51.546391752515454,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 19.400000000023283,
+            "max": 19.400000000023283
+          },
+          "work": {
+            "mean": 0.24222222222662013,
+            "p50": 0.2000000000698492,
+            "p95": 0.40000000002328306,
+            "p99": 0.8000000000465661,
+            "max": 0.8000000000465661
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27719780,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.462,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.37902222222222226
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1500.3000000000466,
+          "fps": 59.32937804146482,
+          "low1": 30.864197530842016,
+          "interval": {
+            "mean": 16.85505617977502,
+            "p50": 16.699999999953434,
+            "p95": 17.29999999993015,
+            "p99": 32.40000000002328,
+            "max": 32.40000000002328
+          },
+          "work": {
+            "mean": 0.20555555555167504,
+            "p50": 0.19999999995343387,
+            "p95": 0.40000000002328306,
+            "p99": 0.5999999999767169,
+            "max": 0.5999999999767169
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29751732,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 0.39352222222222216
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1484,
+          "fps": 60.00539374325971,
+          "low1": 50,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 20,
+            "max": 20
+          },
+          "work": {
+            "mean": 1.4888888888901823,
+            "p50": 1.3000000000465661,
+            "p95": 1.7999999999301508,
+            "p99": 12.599999999976717,
+            "max": 12.599999999976717
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 27500055,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 37.35499999999999,
+          "gcCount": 13,
+          "callbackThreadMsPerFrame": 1.5853888888888883
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1484.1999999999534,
+          "fps": 60.00539374325971,
+          "low1": 39.68253968261301,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 16.900000000023283,
+            "p99": 25.199999999953434,
+            "max": 25.199999999953434
+          },
+          "work": {
+            "mean": 1.351111111114733,
+            "p50": 1.1999999999534339,
+            "p95": 2.5,
+            "p99": 3.5,
+            "max": 3.5
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 34238459,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 8.515999999999998,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 1.3018444444444448
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484,
+          "fps": 60.01348617666891,
+          "low1": 42.5531914893617,
+          "interval": {
+            "mean": 16.662921348314608,
+            "p50": 16.699999999953434,
+            "p95": 17.20000000006985,
+            "p99": 23.5,
+            "max": 23.5
+          },
+          "work": {
+            "mean": 0.905555555546501,
+            "p50": 0.8999999999068677,
+            "p95": 1.3000000000465661,
+            "p99": 2.5,
+            "max": 2.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 30514539,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 3.251,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.0295999999999998
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.5999999999767,
+          "fps": 60.00134834490474,
+          "low1": 58.13953488348483,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 17.20000000006985,
+            "max": 17.20000000006985
+          },
+          "work": {
+            "mean": 0.4799999999956021,
+            "p50": 0.40000000002328306,
+            "p95": 0.7999999999301508,
+            "p99": 3.300000000046566,
+            "max": 3.300000000046566
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 33729555,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 1.866,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.5434555555555554
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.3000000000466,
+          "fps": 60.00539374325499,
+          "low1": 59.52380952364454,
+          "interval": {
+            "mean": 16.66516853932663,
+            "p50": 16.699999999953434,
+            "p95": 16.800000000046566,
+            "p99": 16.800000000046566,
+            "max": 16.800000000046566
+          },
+          "work": {
+            "mean": 0.16666666667184069,
+            "p50": 0.19999999995343387,
+            "p95": 0.30000000004656613,
+            "p99": 0.5,
+            "max": 0.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 31968907,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 2.106,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.32241111111111115
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "cpu4",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.5999999999767,
+          "fps": 60.00134834490945,
+          "low1": 24.691358024691358,
+          "interval": {
+            "mean": 16.666292134830677,
+            "p50": 16.600000000093132,
+            "p95": 17.79999999993015,
+            "p99": 40.5,
+            "max": 40.5
+          },
+          "work": {
+            "mean": 0.9588888888958738,
+            "p50": 0.8999999999068677,
+            "p95": 2.5,
+            "p99": 5.600000000093132,
+            "max": 5.600000000093132
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25750595,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 2.866,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.9425333333333346
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1481.8000000000466,
+          "fps": 60.070194384445465,
+          "low1": 28.011204481829253,
+          "interval": {
+            "mean": 16.647191011237002,
+            "p50": 16.70000000006985,
+            "p95": 17.699999999953434,
+            "p99": 35.699999999953434,
+            "max": 35.699999999953434
+          },
+          "work": {
+            "mean": 0.9344444444415987,
+            "p50": 0.7000000000698492,
+            "p95": 2.299999999930151,
+            "p99": 5.900000000023283,
+            "max": 5.900000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28455111,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 2.301,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.5020888888888881
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1484.6999999999534,
+          "fps": 59.99325918436131,
+          "low1": 44.052863435987796,
+          "interval": {
+            "mean": 16.668539325842698,
+            "p50": 16.699999999953434,
+            "p95": 18,
+            "p99": 22.70000000006985,
+            "max": 22.70000000006985
+          },
+          "work": {
+            "mean": 0.8155555555441727,
+            "p50": 0.8000000000465661,
+            "p95": 2,
+            "p99": 3.799999999930151,
+            "max": 3.799999999930151
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29432135,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4511777777777783
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 2052.100000000093,
+          "fps": 43.72604893386999,
+          "low1": 10.548523206758826,
+          "interval": {
+            "mean": 22.869662921348578,
+            "p50": 19.899999999906868,
+            "p95": 43.10000000009313,
+            "p99": 94.79999999993015,
+            "max": 94.79999999993015
+          },
+          "work": {
+            "mean": 20.444444444450912,
+            "p50": 18.199999999953434,
+            "p95": 30,
+            "p99": 93.19999999995343,
+            "max": 93.19999999995343
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 33982074,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 68.61200000000001,
+          "gcCount": 38,
+          "callbackThreadMsPerFrame": 21.193166666666652
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 3911.9000000000233,
+          "fps": 22.984349981922698,
+          "low1": 11.84834123222422,
+          "interval": {
+            "mean": 43.5078651685388,
+            "p50": 43.59999999997672,
+            "p95": 53.40000000002328,
+            "p99": 84.40000000002328,
+            "max": 84.40000000002328
+          },
+          "work": {
+            "mean": 41.70333333333773,
+            "p50": 41.59999999997672,
+            "p95": 51.29999999993015,
+            "p99": 81.69999999995343,
+            "max": 81.69999999995343
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 44734266,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 125.17000000000003,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 42.252344444444425
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1506.0999999999767,
+          "fps": 59.33333333333333,
+          "low1": 24.691358024691358,
+          "interval": {
+            "mean": 16.853932584269664,
+            "p50": 16.699999999953434,
+            "p95": 18.699999999953434,
+            "p99": 40.5,
+            "max": 40.5
+          },
+          "work": {
+            "mean": 4.403333333331264,
+            "p50": 4.300000000046566,
+            "p95": 9.099999999976717,
+            "p99": 38.5,
+            "max": 38.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 45496194,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 4.690188888888889
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1484.1999999999534,
+          "fps": 59.99730349197695,
+          "low1": 56.49717514139157,
+          "interval": {
+            "mean": 16.66741573033734,
+            "p50": 16.699999999953434,
+            "p95": 17.20000000006985,
+            "p99": 17.699999999953434,
+            "max": 17.699999999953434
+          },
+          "work": {
+            "mean": 1.8555555555490881,
+            "p50": 1.5,
+            "p95": 6,
+            "p99": 7.099999999976717,
+            "max": 7.099999999976717
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 32404414,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 1.717,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.30651111111111
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1500,
+          "fps": 59.34520237380994,
+          "low1": 25.974025974025974,
+          "interval": {
+            "mean": 16.850561797752285,
+            "p50": 16.699999999953434,
+            "p95": 18.20000000006985,
+            "p99": 38.5,
+            "max": 38.5
+          },
+          "work": {
+            "mean": 1.3722222222183418,
+            "p50": 0.7999999999301508,
+            "p95": 3.099999999976717,
+            "p99": 33.39999999990687,
+            "max": 33.39999999990687
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 37765650,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.7520555555555555
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "cpu4",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.8999999999069,
+          "fps": 60.01753321195333,
+          "low1": 54.054054054054056,
+          "interval": {
+            "mean": 16.661797752807942,
+            "p50": 16.70000000006985,
+            "p95": 17.79999999993015,
+            "p99": 18.5,
+            "max": 18.5
+          },
+          "work": {
+            "mean": 0.6733333333253136,
+            "p50": 0.40000000002328306,
+            "p95": 1.7000000000698492,
+            "p99": 3.299999999930151,
+            "max": 3.299999999930151
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26686918,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 5.03,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.3172222222222223
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1483.8000000000466,
+          "fps": 59.985172204620746,
+          "low1": 35.97122302152248,
+          "interval": {
+            "mean": 16.67078651685472,
+            "p50": 16.699999999953434,
+            "p95": 17.800000000046566,
+            "p99": 27.800000000046566,
+            "max": 27.800000000046566
+          },
+          "work": {
+            "mean": 0.7322222222224809,
+            "p50": 0.40000000002328306,
+            "p95": 2.300000000046566,
+            "p99": 4.5,
+            "max": 4.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28537314,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.2312666666666665
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1517.9000000000233,
+          "fps": 58.66842452208306,
+          "low1": 19.531250000017764,
+          "interval": {
+            "mean": 17.04494382022472,
+            "p50": 16.600000000093132,
+            "p95": 18,
+            "p99": 51.199999999953434,
+            "max": 51.199999999953434
+          },
+          "work": {
+            "mean": 0.7988888888775061,
+            "p50": 0.7000000000698492,
+            "p95": 1.5,
+            "p99": 14.5,
+            "max": 14.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28884942,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.7087555555555556
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1489.6999999999534,
+          "fps": 59.99325918436131,
+          "low1": 34.9650349649211,
+          "interval": {
+            "mean": 16.668539325842698,
+            "p50": 16.699999999953434,
+            "p95": 17.599999999976717,
+            "p99": 28.600000000093132,
+            "max": 28.600000000093132
+          },
+          "work": {
+            "mean": 5.227777777786832,
+            "p50": 5.699999999953434,
+            "p95": 8.599999999976717,
+            "p99": 9.300000000046566,
+            "max": 9.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 30636130,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 19.5,
+          "gcCount": 12,
+          "callbackThreadMsPerFrame": 5.795466666666665
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1503.5,
+          "fps": 59.353117705901965,
+          "low1": 20.96436058702256,
+          "interval": {
+            "mean": 16.848314606741575,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 47.699999999953434,
+            "max": 47.699999999953434
+          },
+          "work": {
+            "mean": 4.928888888898978,
+            "p50": 5,
+            "p95": 6.5,
+            "p99": 9.099999999976717,
+            "max": 9.099999999976717
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 35133382,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 26.122000000000003,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 5.312866666666666
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1488.4000000000233,
+          "fps": 60.00539374325971,
+          "low1": 54.34782608688775,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.699999999953434,
+            "p95": 17.70000000006985,
+            "p99": 18.400000000023283,
+            "max": 18.400000000023283
+          },
+          "work": {
+            "mean": 4.403333333333851,
+            "p50": 4,
+            "p95": 6.400000000023283,
+            "p99": 16.29999999993015,
+            "max": 16.29999999993015
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 33083206,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 6.605,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 4.570511111111112
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.2000000000698,
+          "fps": 60.02158079309226,
+          "low1": 53.191489361570376,
+          "interval": {
+            "mean": 16.660674157303895,
+            "p50": 16.699999999953434,
+            "p95": 17.599999999976717,
+            "p99": 18.800000000046566,
+            "max": 18.800000000046566
+          },
+          "work": {
+            "mean": 1.4577777777785539,
+            "p50": 1.400000000023283,
+            "p95": 3.199999999953434,
+            "p99": 3.599999999976717,
+            "max": 3.599999999976717
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 36227062,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 5.414,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.2559111111111108
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.7000000000698,
+          "fps": 59.985172204620746,
+          "low1": 39.525691699532,
+          "interval": {
+            "mean": 16.67078651685472,
+            "p50": 16.699999999953434,
+            "p95": 17.79999999993015,
+            "p99": 25.300000000046566,
+            "max": 25.300000000046566
+          },
+          "work": {
+            "mean": 0.7111111111136981,
+            "p50": 0.7999999999301508,
+            "p95": 1.400000000023283,
+            "p99": 1.900000000023283,
+            "max": 1.900000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 40916794,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4180444444444444
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "cpu4",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1485,
+          "fps": 59.93669607380874,
+          "low1": 52.35602094215309,
+          "interval": {
+            "mean": 16.68426966292161,
+            "p50": 16.600000000093132,
+            "p95": 18.5,
+            "p99": 19.100000000093132,
+            "max": 19.100000000093132
+          },
+          "work": {
+            "mean": 0.9011111111082654,
+            "p50": 1,
+            "p95": 2.099999999976717,
+            "p99": 4.399999999906868,
+            "max": 4.399999999906868
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26678516,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 2.563,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.5027
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1484.7000000000698,
+          "fps": 60.01348617666891,
+          "low1": 26.95417789759104,
+          "interval": {
+            "mean": 16.662921348314608,
+            "p50": 16.599999999976717,
+            "p95": 18.099999999976717,
+            "p99": 37.09999999997672,
+            "max": 37.09999999997672
+          },
+          "work": {
+            "mean": 0.9111111111149917,
+            "p50": 0.5999999999767169,
+            "p95": 3.699999999953434,
+            "p99": 5.899999999906868,
+            "max": 5.899999999906868
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28415188,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.6243333333333334
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1484.5999999999767,
+          "fps": 60.01753321195333,
+          "low1": 39.68253968242969,
+          "interval": {
+            "mean": 16.661797752807942,
+            "p50": 16.699999999953434,
+            "p95": 18,
+            "p99": 25.20000000006985,
+            "max": 25.20000000006985
+          },
+          "work": {
+            "mean": 0.6855555555589187,
+            "p50": 0.2999999999301508,
+            "p95": 2.299999999930151,
+            "p99": 5.799999999930151,
+            "max": 5.799999999930151
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28729860,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.0880333333333334
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1489.0999999999767,
+          "fps": 60.00943968714274,
+          "low1": 51.282051282051285,
+          "interval": {
+            "mean": 16.664044943819963,
+            "p50": 16.599999999976717,
+            "p95": 17.800000000046566,
+            "p99": 19.5,
+            "max": 19.5
+          },
+          "work": {
+            "mean": 5.393333333338766,
+            "p50": 6.199999999953434,
+            "p95": 8.79999999993015,
+            "p99": 16,
+            "max": 16
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 31085658,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 21.796,
+          "gcCount": 12,
+          "callbackThreadMsPerFrame": 5.8347000000000016
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1488.5,
+          "fps": 60.01753321194862,
+          "low1": 49.261083743729365,
+          "interval": {
+            "mean": 16.66179775280925,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 20.300000000046566,
+            "max": 20.300000000046566
+          },
+          "work": {
+            "mean": 4.514444444441081,
+            "p50": 4.600000000093132,
+            "p95": 6.099999999976717,
+            "p99": 6.699999999953434,
+            "max": 6.699999999953434
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 36977082,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 29.497,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 4.9536333333333324
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1491.5,
+          "fps": 59.92055477008294,
+          "low1": 44.64285714281074,
+          "interval": {
+            "mean": 16.688764044943035,
+            "p50": 16.599999999976717,
+            "p95": 18.199999999953434,
+            "p99": 22.400000000023283,
+            "max": 22.400000000023283
+          },
+          "work": {
+            "mean": 3.3366666666658906,
+            "p50": 1.900000000023283,
+            "p95": 9.600000000093132,
+            "p99": 13.800000000046566,
+            "max": 13.800000000046566
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 33999042,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 8.042,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 3.4161222222222216
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1490.3000000000466,
+          "fps": 59.97304582210242,
+          "low1": 40,
+          "interval": {
+            "mean": 16.674157303370787,
+            "p50": 16.699999999953434,
+            "p95": 18.400000000023283,
+            "p99": 25,
+            "max": 25
+          },
+          "work": {
+            "mean": 2.1411111111118872,
+            "p50": 1.8999999999068677,
+            "p95": 5.400000000023283,
+            "p99": 7.400000000023283,
+            "max": 7.400000000023283
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 37143106,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 3.906,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.529088888888889
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1484.4000000000233,
+          "fps": 59.96496429052406,
+          "low1": 24.330900243322787,
+          "interval": {
+            "mean": 16.67640449438281,
+            "p50": 16.599999999976717,
+            "p95": 18.099999999976717,
+            "p99": 41.09999999997672,
+            "max": 41.09999999997672
+          },
+          "work": {
+            "mean": 0.8733333333304876,
+            "p50": 0.8000000000465661,
+            "p95": 2.200000000069849,
+            "p99": 4.400000000023283,
+            "max": 4.400000000023283
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 41826278,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4924555555555559
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "cpu4",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1484,
+          "fps": 60.00943968714274,
+          "low1": 32.89473684208007,
+          "interval": {
+            "mean": 16.664044943819963,
+            "p50": 16.599999999976717,
+            "p95": 17.900000000023283,
+            "p99": 30.400000000023283,
+            "max": 30.400000000023283
+          },
+          "work": {
+            "mean": 0.7222222222222222,
+            "p50": 0.6999999999534339,
+            "p95": 1.6999999999534339,
+            "p99": 3,
+            "max": 3
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25651569,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 4.061,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.4363777777777778
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1489.4000000000233,
+          "fps": 59.844002151691654,
+          "low1": 33.898305084745765,
+          "interval": {
+            "mean": 16.710112359551346,
+            "p50": 16.70000000006985,
+            "p95": 17.70000000006985,
+            "p99": 29.5,
+            "max": 29.5
+          },
+          "work": {
+            "mean": 1.1033333333377313,
+            "p50": 0.9000000000232831,
+            "p95": 3.199999999953434,
+            "p99": 6.100000000093132,
+            "max": 6.100000000093132
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28129283,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.444,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.6715333333333338
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.6999999999534,
+          "fps": 59.985172204625464,
+          "low1": 39.21568627450981,
+          "interval": {
+            "mean": 16.670786516853408,
+            "p50": 16.699999999953434,
+            "p95": 19.599999999976717,
+            "p99": 25.5,
+            "max": 25.5
+          },
+          "work": {
+            "mean": 0.7233333333356616,
+            "p50": 0.7000000000698492,
+            "p95": 1.8000000000465661,
+            "p99": 2.3999999999068677,
+            "max": 2.3999999999068677
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29177355,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 1.299,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.3914777777777783
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1917.5,
+          "fps": 46.7436974789916,
+          "low1": 12.062726176129354,
+          "interval": {
+            "mean": 21.39325842696629,
+            "p50": 18.900000000023283,
+            "p95": 40.59999999997672,
+            "p99": 82.89999999990687,
+            "max": 82.89999999990687
+          },
+          "work": {
+            "mean": 19.428888888887336,
+            "p50": 17.5,
+            "p95": 39.39999999990687,
+            "p99": 81,
+            "max": 81
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 40440514,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 80.19900000000001,
+          "gcCount": 36,
+          "callbackThreadMsPerFrame": 20.161488888888904
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 3584,
+          "fps": 25.127756288997265,
+          "low1": 18.214936247715407,
+          "interval": {
+            "mean": 39.796629213483406,
+            "p50": 39.09999999997672,
+            "p95": 49.300000000046566,
+            "p99": 54.90000000002328,
+            "max": 54.90000000002328
+          },
+          "work": {
+            "mean": 37.984444444451945,
+            "p50": 37.300000000046566,
+            "p95": 46.90000000002328,
+            "p99": 52.10000000009313,
+            "max": 52.10000000009313
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 59083790,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 134.72699999999998,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 38.12092222222219
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1485.4000000000233,
+          "fps": 60.00539374325971,
+          "low1": 35.46099290771358,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.70000000006985,
+            "p95": 20.100000000093132,
+            "p99": 28.20000000006985,
+            "max": 28.20000000006985
+          },
+          "work": {
+            "mean": 5.9988888888930285,
+            "p50": 5.800000000046566,
+            "p95": 11.599999999976717,
+            "p99": 13.400000000023283,
+            "max": 13.400000000023283
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 53008430,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 6.0578999999999965
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1485,
+          "fps": 59.99325918436131,
+          "low1": 55.55555555555556,
+          "interval": {
+            "mean": 16.668539325842698,
+            "p50": 16.600000000093132,
+            "p95": 17.699999999953434,
+            "p99": 18,
+            "max": 18
+          },
+          "work": {
+            "mean": 2.3333333333346267,
+            "p50": 2.199999999953434,
+            "p95": 4.199999999953434,
+            "p99": 7.699999999953434,
+            "max": 7.699999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 39628346,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.9606999999999988
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1484.8999999999069,
+          "fps": 59.99325918436131,
+          "low1": 42.735042735000214,
+          "interval": {
+            "mean": 16.668539325842698,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 23.400000000023283,
+            "max": 23.400000000023283
+          },
+          "work": {
+            "mean": 0.6022222222165308,
+            "p50": 0.39999999990686774,
+            "p95": 1.400000000023283,
+            "p99": 5.199999999953434,
+            "max": 5.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 44991554,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.2827888888888892
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "cpu4",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1482.5,
+          "fps": 60.041826890645744,
+          "low1": 53.47593582867726,
+          "interval": {
+            "mean": 16.655056179774498,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 18.70000000006985,
+            "max": 18.70000000006985
+          },
+          "work": {
+            "mean": 0.93666666666201,
+            "p50": 0.8000000000465661,
+            "p95": 2.400000000023283,
+            "p99": 3.6000000000931323,
+            "max": 3.6000000000931323
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25676609,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 4.392,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.6977000000000007
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1501.5999999999767,
+          "fps": 59.787720005375114,
+          "low1": 30.303030303030305,
+          "interval": {
+            "mean": 16.725842696628952,
+            "p50": 16.699999999953434,
+            "p95": 18.5,
+            "p99": 33,
+            "max": 33
+          },
+          "work": {
+            "mean": 1.0155555555532272,
+            "p50": 0.7999999999301508,
+            "p95": 3.800000000046566,
+            "p99": 13,
+            "max": 13
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28320975,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 1.015,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.6953555555555557
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1485.3999999999069,
+          "fps": 59.9245892809068,
+          "low1": 26.041666666650876,
+          "interval": {
+            "mean": 16.68764044943768,
+            "p50": 16.599999999976717,
+            "p95": 17.900000000023283,
+            "p99": 38.40000000002328,
+            "max": 38.40000000002328
+          },
+          "work": {
+            "mean": 0.8855555555524511,
+            "p50": 0.7000000000698492,
+            "p95": 2.199999999953434,
+            "p99": 9.699999999953434,
+            "max": 9.699999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29339475,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.540011111111111
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 2022.8000000000466,
+          "fps": 44.33154014744024,
+          "low1": 10.51524710830962,
+          "interval": {
+            "mean": 22.557303370786254,
+            "p50": 19.5,
+            "p95": 38.09999999997672,
+            "p99": 95.09999999997672,
+            "max": 95.09999999997672
+          },
+          "work": {
+            "mean": 20.50333333333644,
+            "p50": 17.900000000023283,
+            "p95": 33.5,
+            "p99": 93.30000000004657,
+            "max": 93.30000000004657
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 46721143,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 86.029,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 21.079144444444438
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 3602.9000000000233,
+          "fps": 24.93975228380894,
+          "low1": 13.477088948774375,
+          "interval": {
+            "mean": 40.096629213482885,
+            "p50": 38.199999999953434,
+            "p95": 53.09999999997672,
+            "p99": 74.20000000006985,
+            "max": 74.20000000006985
+          },
+          "work": {
+            "mean": 38.35999999999767,
+            "p50": 36.60000000009313,
+            "p95": 47.5999999998603,
+            "p99": 67.70000000006985,
+            "max": 67.70000000006985
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 59686582,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 124.189,
+          "gcCount": 36,
+          "callbackThreadMsPerFrame": 38.550988888888895
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1525.1999999999534,
+          "fps": 58.66455737920674,
+          "low1": 18.939393939460754,
+          "interval": {
+            "mean": 17.046067415731383,
+            "p50": 16.699999999953434,
+            "p95": 17.800000000046566,
+            "p99": 52.799999999813735,
+            "max": 52.799999999813735
+          },
+          "work": {
+            "mean": 6.295555555564351,
+            "p50": 6.099999999860302,
+            "p95": 9.700000000186265,
+            "p99": 43.199999999953434,
+            "max": 43.199999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 54015766,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 6.664511111111109
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1484.1999999999534,
+          "fps": 59.985172204625464,
+          "low1": 43.290043289868755,
+          "interval": {
+            "mean": 16.670786516853408,
+            "p50": 16.699999999953434,
+            "p95": 18,
+            "p99": 23.100000000093132,
+            "max": 23.100000000093132
+          },
+          "work": {
+            "mean": 2.0200000000056915,
+            "p50": 2,
+            "p95": 3.5,
+            "p99": 7.399999999906868,
+            "max": 7.399999999906868
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 39362118,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.5465888888888872
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1501.1999999999534,
+          "fps": 59.34915977594578,
+          "low1": 23.47417840370455,
+          "interval": {
+            "mean": 16.849438202245622,
+            "p50": 16.699999999953434,
+            "p95": 17.899999999906868,
+            "p99": 42.60000000009313,
+            "max": 42.60000000009313
+          },
+          "work": {
+            "mean": 1.2733333333628252,
+            "p50": 0.8999999999068677,
+            "p95": 2.199999999953434,
+            "p99": 37,
+            "max": 37
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 44726062,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.11388888888889
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "cpu4",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1502.3999999999069,
+          "fps": 59.242494841241594,
+          "low1": 21.097046413543563,
+          "interval": {
+            "mean": 16.8797752808994,
+            "p50": 16.799999999813735,
+            "p95": 17.9000000001397,
+            "p99": 47.39999999990687,
+            "max": 47.39999999990687
+          },
+          "work": {
+            "mean": 0.9355555555627991,
+            "p50": 0.7999999998137355,
+            "p95": 2.3999999999068677,
+            "p99": 6.100000000093132,
+            "max": 6.100000000093132
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26655960,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 6.036,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.8313555555555556
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1500.9000000001397,
+          "fps": 59.30565735990055,
+          "low1": 20.449897750452827,
+          "interval": {
+            "mean": 16.861797752808467,
+            "p50": 16.600000000093132,
+            "p95": 17.800000000046566,
+            "p99": 48.9000000001397,
+            "max": 48.9000000001397
+          },
+          "work": {
+            "mean": 1.1033333333364377,
+            "p50": 1.0999999998603016,
+            "p95": 2.0999999998603016,
+            "p99": 5.699999999953434,
+            "max": 5.699999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 27093870,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.387,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.7708111111111113
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1482.5,
+          "fps": 60.03777657852509,
+          "low1": 44.05286343576187,
+          "interval": {
+            "mean": 16.656179775279853,
+            "p50": 16.600000000093132,
+            "p95": 18.199999999953434,
+            "p99": 22.700000000186265,
+            "max": 22.700000000186265
+          },
+          "work": {
+            "mean": 0.5788888888899237,
+            "p50": 0.5,
+            "p95": 1.6000000000931323,
+            "p99": 3.199999999953434,
+            "max": 3.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28233702,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 1.777,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.0294666666666668
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1489.8000000000466,
+          "fps": 60.02158079309226,
+          "low1": 43.66812227047597,
+          "interval": {
+            "mean": 16.660674157303895,
+            "p50": 16.699999999953434,
+            "p95": 18.399999999906868,
+            "p99": 22.9000000001397,
+            "max": 22.9000000001397
+          },
+          "work": {
+            "mean": 5.7433333333322985,
+            "p50": 6.100000000093132,
+            "p95": 8.399999999906868,
+            "p99": 17.700000000186265,
+            "max": 17.700000000186265
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 27501413,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 53.448,
+          "gcCount": 13,
+          "callbackThreadMsPerFrame": 6.952200000000001
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1484.8000000000466,
+          "fps": 59.97708740480599,
+          "low1": 39.840637450051375,
+          "interval": {
+            "mean": 16.67303370786674,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 25.100000000093132,
+            "max": 25.100000000093132
+          },
+          "work": {
+            "mean": 4.7233333333447165,
+            "p50": 4.899999999906868,
+            "p95": 6.100000000093132,
+            "p99": 23.800000000046566,
+            "max": 23.800000000046566
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 32390241,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 28.267,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 5.255522222222221
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1489.5,
+          "fps": 59.997303491981654,
+          "low1": 36.49635036477743,
+          "interval": {
+            "mean": 16.66741573033603,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 27.4000000001397,
+            "max": 27.4000000001397
+          },
+          "work": {
+            "mean": 3.6966666666532144,
+            "p50": 3.800000000046566,
+            "p95": 6.100000000093132,
+            "p99": 7.199999999953434,
+            "max": 7.199999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 29270789,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 5.976000000000001,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 4.010266666666667
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.8999999999069,
+          "fps": 60.01753321195333,
+          "low1": 26.881720430141176,
+          "interval": {
+            "mean": 16.661797752807942,
+            "p50": 16.699999999953434,
+            "p95": 18.200000000186265,
+            "p99": 37.199999999953434,
+            "max": 37.199999999953434
+          },
+          "work": {
+            "mean": 1.3322222222341225,
+            "p50": 1.1999999999534339,
+            "p95": 2.800000000046566,
+            "p99": 5.400000000139698,
+            "max": 5.400000000139698
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 32401741,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 5.049,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.9777555555555562
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1484.1000000000931,
+          "fps": 59.977087404815414,
+          "low1": 40.98360655753348,
+          "interval": {
+            "mean": 16.67303370786412,
+            "p50": 16.699999999953434,
+            "p95": 17.799999999813735,
+            "p99": 24.399999999906868,
+            "max": 24.399999999906868
+          },
+          "work": {
+            "mean": 0.9144444444501358,
+            "p50": 0.8999999999068677,
+            "p95": 1.7000000001862645,
+            "p99": 7.300000000046566,
+            "max": 7.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 37097753,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.790777777777778
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1502.5,
+          "fps": 59.34124549939808,
+          "low1": 23.640661938508256,
+          "interval": {
+            "mean": 16.85168539325895,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 42.300000000046566,
+            "max": 42.300000000046566
+          },
+          "work": {
+            "mean": 1.4111111111059371,
+            "p50": 1.0999999998603016,
+            "p95": 2.5,
+            "p99": 32.5,
+            "max": 32.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25750557,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 5.41,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 2.4950888888888905
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1485.8000000000466,
+          "fps": 59.9811295322801,
+          "low1": 37.03703703703704,
+          "interval": {
+            "mean": 16.671910112360074,
+            "p50": 16.699999999953434,
+            "p95": 17.800000000046566,
+            "p99": 27,
+            "max": 27
+          },
+          "work": {
+            "mean": 0.9211111111074893,
+            "p50": 0.6999999999534339,
+            "p95": 2.2000000001862645,
+            "p99": 9.399999999906868,
+            "max": 9.399999999906868
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 26985399,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0.413,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.5236222222222213
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1485.0999999998603,
+          "fps": 60.00943968714745,
+          "low1": 51.546391752206134,
+          "interval": {
+            "mean": 16.664044943818656,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 19.4000000001397,
+            "max": 19.4000000001397
+          },
+          "work": {
+            "mean": 0.6311111111219765,
+            "p50": 0.5,
+            "p95": 1.9000000001396984,
+            "p99": 5.5,
+            "max": 5.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29878659,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.240511111111111
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1816.2999999998137,
+          "fps": 49.40876033975973,
+          "low1": 11.792452830182203,
+          "interval": {
+            "mean": 20.239325842694537,
+            "p50": 18.399999999906868,
+            "p95": 30.399999999906868,
+            "p99": 84.80000000004657,
+            "max": 84.80000000004657
+          },
+          "work": {
+            "mean": 17.74333333334782,
+            "p50": 16.800000000046566,
+            "p95": 28.800000000046566,
+            "p99": 81.5,
+            "max": 81.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 38789658,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 75.948,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 18.553588888888893
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 3906.9000000001397,
+          "fps": 23.013471931321316,
+          "low1": 14.144271570023461,
+          "interval": {
+            "mean": 43.452808988764566,
+            "p50": 43.60000000009313,
+            "p95": 48.89999999990687,
+            "p99": 70.69999999995343,
+            "max": 70.69999999995343
+          },
+          "work": {
+            "mean": 41.643333333350405,
+            "p50": 41.800000000046566,
+            "p95": 47.199999999953434,
+            "p99": 68.4000000001397,
+            "max": 68.4000000001397
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 60883966,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 140.65300000000002,
+          "gcCount": 36,
+          "callbackThreadMsPerFrame": 41.89806666666667
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1486,
+          "fps": 60.0701943844549,
+          "low1": 42.37288135576499,
+          "interval": {
+            "mean": 16.647191011234387,
+            "p50": 16.699999999953434,
+            "p95": 17.600000000093132,
+            "p99": 23.600000000093132,
+            "max": 23.600000000093132
+          },
+          "work": {
+            "mean": 6.038888888894063,
+            "p50": 6.099999999860302,
+            "p95": 7.599999999860302,
+            "p99": 15.300000000046566,
+            "max": 15.300000000046566
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 54827066,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 6.339711111111111
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1485.4000000001397,
+          "fps": 59.96900478404044,
+          "low1": 41.49377593385048,
+          "interval": {
+            "mean": 16.67528089887745,
+            "p50": 16.600000000093132,
+            "p95": 18.5,
+            "p99": 24.0999999998603,
+            "max": 24.0999999998603
+          },
+          "work": {
+            "mean": 2.8466666666661493,
+            "p50": 2.5999999998603016,
+            "p95": 5.199999999953434,
+            "p99": 12.099999999860302,
+            "max": 12.099999999860302
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 40609858,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 3.4679888888888866
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1485.3000000000466,
+          "fps": 59.9811295322801,
+          "low1": 49.75124378086401,
+          "interval": {
+            "mean": 16.671910112360074,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 20.100000000093132,
+            "max": 20.100000000093132
+          },
+          "work": {
+            "mean": 0.9811111111297376,
+            "p50": 0.8999999999068677,
+            "p95": 2.7000000001862645,
+            "p99": 4.699999999953434,
+            "max": 4.699999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 45944294,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.8127000000000009
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "mobile",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1484.1999999999534,
+          "fps": 59.98921542195227,
+          "low1": 53.191489361570376,
+          "interval": {
+            "mean": 16.669662921346745,
+            "p50": 16.699999999953434,
+            "p95": 17.9000000001397,
+            "p99": 18.800000000046566,
+            "max": 18.800000000046566
+          },
+          "work": {
+            "mean": 1.0522222222346398,
+            "p50": 1.0999999998603016,
+            "p95": 2,
+            "p99": 4.5,
+            "max": 4.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26718384,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 1.243,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.671544444444444
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1484.6000000000931,
+          "fps": 59.9811295322801,
+          "low1": 26.595744680785188,
+          "interval": {
+            "mean": 16.671910112360074,
+            "p50": 16.699999999953434,
+            "p95": 18,
+            "p99": 37.60000000009313,
+            "max": 37.60000000009313
+          },
+          "work": {
+            "mean": 0.7722222222170482,
+            "p50": 0.6000000000931323,
+            "p95": 2.4000000001396984,
+            "p99": 4.199999999953434,
+            "max": 4.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28534836,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.5418222222222226
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1500.6000000000931,
+          "fps": 59.329378041460224,
+          "low1": 26.31578947368421,
+          "interval": {
+            "mean": 16.855056179776327,
+            "p50": 16.699999999953434,
+            "p95": 18.0999999998603,
+            "p99": 38,
+            "max": 38
+          },
+          "work": {
+            "mean": 0.7988888889059631,
+            "p50": 0.6000000000931323,
+            "p95": 1.9000000001396984,
+            "p99": 14.300000000046566,
+            "max": 14.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28815912,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4444000000000004
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1508,
+          "fps": 59.321469039523585,
+          "low1": 23.201856148441745,
+          "interval": {
+            "mean": 16.85730337078704,
+            "p50": 16.699999999953434,
+            "p95": 17.899999999906868,
+            "p99": 43.10000000009313,
+            "max": 43.10000000009313
+          },
+          "work": {
+            "mean": 5.9399999999881,
+            "p50": 6.399999999906868,
+            "p95": 9.399999999906868,
+            "p99": 23.899999999906868,
+            "max": 23.899999999906868
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 30887843,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 38.06100000000001,
+          "gcCount": 12,
+          "callbackThreadMsPerFrame": 6.292611111111113
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1487.5,
+          "fps": 60.01348617666891,
+          "low1": 50.505050505525624,
+          "interval": {
+            "mean": 16.662921348314608,
+            "p50": 16.5999999998603,
+            "p95": 17.5999999998603,
+            "p99": 19.799999999813735,
+            "max": 19.799999999813735
+          },
+          "work": {
+            "mean": 4.746666666689432,
+            "p50": 4.600000000093132,
+            "p95": 6.400000000139698,
+            "p99": 8.400000000139698,
+            "max": 8.400000000139698
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 28708401,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 25.628,
+          "gcCount": 23,
+          "callbackThreadMsPerFrame": 5.23767777777778
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1489.1999999999534,
+          "fps": 60.00134834490474,
+          "low1": 52.35602094215309,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.700000000186265,
+            "p95": 17.800000000046566,
+            "p99": 19.100000000093132,
+            "max": 19.100000000093132
+          },
+          "work": {
+            "mean": 4.981111111109041,
+            "p50": 5.099999999860302,
+            "p95": 6.199999999953434,
+            "p99": 6.699999999953434,
+            "max": 6.699999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 33341993,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 4.099,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 5.213377777777779
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1482.1999999999534,
+          "fps": 60.05803360551022,
+          "low1": 45.87155963341946,
+          "interval": {
+            "mean": 16.650561797751763,
+            "p50": 16.699999999953434,
+            "p95": 17.600000000093132,
+            "p99": 21.799999999813735,
+            "max": 21.799999999813735
+          },
+          "work": {
+            "mean": 2.163333333348338,
+            "p50": 2.199999999953434,
+            "p95": 4.199999999953434,
+            "p99": 7.100000000093132,
+            "max": 7.100000000093132
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 36122741,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.6297333333333337
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1484.1000000000931,
+          "fps": 60.033726812816184,
+          "low1": 36.63003662997415,
+          "interval": {
+            "mean": 16.65730337078652,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 27.300000000046566,
+            "max": 27.300000000046566
+          },
+          "work": {
+            "mean": 0.6922222222279136,
+            "p50": 0.4000000001396984,
+            "p95": 1.8000000000465661,
+            "p99": 4.5,
+            "max": 4.5
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 32683409,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.2916111111111108
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "mobile",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1484.5,
+          "fps": 59.98517220461604,
+          "low1": 31.1526479749875,
+          "interval": {
+            "mean": 16.670786516856026,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 32.10000000009313,
+            "max": 32.10000000009313
+          },
+          "work": {
+            "mean": 0.9188888888806105,
+            "p50": 0.8999999999068677,
+            "p95": 2.1000000000931323,
+            "p99": 3.4000000001396984,
+            "max": 3.4000000001396984
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26720076,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 3.441,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.9964666666666668
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1484.5,
+          "fps": 59.98921542194285,
+          "low1": 33.67003367008646,
+          "interval": {
+            "mean": 16.66966292134936,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 29.699999999953434,
+            "max": 29.699999999953434
+          },
+          "work": {
+            "mean": 0.7955555555643514,
+            "p50": 0.6000000000931323,
+            "p95": 2.1000000000931323,
+            "p99": 3.3999999999068677,
+            "max": 3.3999999999068677
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28640950,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.1972333333333331
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1484.8999999999069,
+          "fps": 60.02158079309226,
+          "low1": 30.21148036245276,
+          "interval": {
+            "mean": 16.660674157303895,
+            "p50": 16.699999999953434,
+            "p95": 17.600000000093132,
+            "p99": 33.10000000009313,
+            "max": 33.10000000009313
+          },
+          "work": {
+            "mean": 0.29000000001396986,
+            "p50": 0.10000000009313226,
+            "p95": 1,
+            "p99": 2.0999999998603016,
+            "max": 2.0999999998603016
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 28765378,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 1.145,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 0.8960222222222222
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1505.1999999999534,
+          "fps": 59.34124549939808,
+          "low1": 23.201856148441745,
+          "interval": {
+            "mean": 16.85168539325895,
+            "p50": 16.5999999998603,
+            "p95": 20.5,
+            "p99": 43.10000000009313,
+            "max": 43.10000000009313
+          },
+          "work": {
+            "mean": 7.7111111111136985,
+            "p50": 6.899999999906868,
+            "p95": 14.300000000046566,
+            "p99": 38.800000000046566,
+            "max": 38.800000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 28648125,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 41.33200000000001,
+          "gcCount": 14,
+          "callbackThreadMsPerFrame": 7.946722222222221
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1487.6000000000931,
+          "fps": 59.997303491981654,
+          "low1": 54.054054054054056,
+          "interval": {
+            "mean": 16.66741573033603,
+            "p50": 16.699999999953434,
+            "p95": 17.5999999998603,
+            "p99": 18.5,
+            "max": 18.5
+          },
+          "work": {
+            "mean": 4.186666666656836,
+            "p50": 4,
+            "p95": 5.599999999860302,
+            "p99": 9.900000000139698,
+            "max": 9.900000000139698
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 34397561,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 24.944000000000003,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 4.707411111111114
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1487.1999999999534,
+          "fps": 60.04587774929348,
+          "low1": 32.46753246748338,
+          "interval": {
+            "mean": 16.65393258426914,
+            "p50": 16.5999999998603,
+            "p95": 17.800000000046566,
+            "p99": 30.800000000046566,
+            "max": 30.800000000046566
+          },
+          "work": {
+            "mean": 3.486666666667184,
+            "p50": 3.699999999953434,
+            "p95": 5.400000000139698,
+            "p99": 11.5,
+            "max": 11.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 30699021,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 5.882,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 3.9908888888888883
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1483.6999999999534,
+          "fps": 60.00134834490474,
+          "low1": 44.05286343621372,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 22.699999999953434,
+            "max": 22.699999999953434
+          },
+          "work": {
+            "mean": 1.7777777777829518,
+            "p50": 1.6999999999534339,
+            "p95": 3.3999999999068677,
+            "p99": 5.199999999953434,
+            "max": 5.199999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 33904197,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 3.808,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.196944444444444
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1485,
+          "fps": 59.98921542195227,
+          "low1": 53.47593582901017,
+          "interval": {
+            "mean": 16.669662921346745,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 18.699999999953434,
+            "max": 18.699999999953434
+          },
+          "work": {
+            "mean": 0.8088888888997543,
+            "p50": 0.7000000001862645,
+            "p95": 2.1000000000931323,
+            "p99": 3.800000000046566,
+            "max": 3.800000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 32177369,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 4.911,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.559511111111111
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 2,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1500.3999999999069,
+          "fps": 59.35707616380254,
+          "low1": 38.46153846153846,
+          "interval": {
+            "mean": 16.84719101123491,
+            "p50": 16.699999999953434,
+            "p95": 17.899999999906868,
+            "p99": 26,
+            "max": 26
+          },
+          "work": {
+            "mean": 0.886666666656836,
+            "p50": 0.8999999999068677,
+            "p95": 2.0999999998603016,
+            "p99": 6,
+            "max": 6
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25718463,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 3.927,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.619666666666667
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1481.5,
+          "fps": 60.078304306731205,
+          "low1": 35.08771929824562,
+          "interval": {
+            "mean": 16.64494382022629,
+            "p50": 16.699999999953434,
+            "p95": 17.700000000186265,
+            "p99": 28.5,
+            "max": 28.5
+          },
+          "work": {
+            "mean": 0.9344444444428922,
+            "p50": 0.9000000001396984,
+            "p95": 1.7999999998137355,
+            "p99": 7.300000000046566,
+            "max": 7.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28382459,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 1.229,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.6353888888888886
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.9000000001397,
+          "fps": 60.02158079309226,
+          "low1": 49.01960784280157,
+          "interval": {
+            "mean": 16.660674157303895,
+            "p50": 16.700000000186265,
+            "p95": 17.5999999998603,
+            "p99": 20.4000000001397,
+            "max": 20.4000000001397
+          },
+          "work": {
+            "mean": 0.7488888889007891,
+            "p50": 0.7999999998137355,
+            "p95": 1.6000000000931323,
+            "p99": 2.800000000046566,
+            "max": 2.800000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 29406663,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.3099000000000005
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 2043.4000000001397,
+          "fps": 44.08122833085686,
+          "low1": 9.75609756097561,
+          "interval": {
+            "mean": 22.685393258426966,
+            "p50": 19.200000000186265,
+            "p95": 39,
+            "p99": 102.5,
+            "max": 102.5
+          },
+          "work": {
+            "mean": 21.280000000004655,
+            "p50": 18,
+            "p95": 37.10000000009313,
+            "p99": 100.80000000004657,
+            "max": 100.80000000004657
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 29269954,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 83.75999999999998,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 22.131844444444443
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 4062.399999999907,
+          "fps": 22.120594522046545,
+          "low1": 10.952902519161993,
+          "interval": {
+            "mean": 45.20674157303266,
+            "p50": 44.5999999998603,
+            "p95": 58.60000000009313,
+            "p99": 91.30000000004657,
+            "max": 91.30000000004657
+          },
+          "work": {
+            "mean": 42.88777777777933,
+            "p50": 42.0999999998603,
+            "p95": 55.699999999953434,
+            "p99": 78.80000000004657,
+            "max": 78.80000000004657
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 33666954,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 154.01799999999997,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 43.423644444444434
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1484.4000000001397,
+          "fps": 60.02562892020558,
+          "low1": 46.9483568074091,
+          "interval": {
+            "mean": 16.659550561799847,
+            "p50": 16.600000000093132,
+            "p95": 17.5999999998603,
+            "p99": 21.300000000046566,
+            "max": 21.300000000046566
+          },
+          "work": {
+            "mean": 5.103333333341611,
+            "p50": 4.899999999906868,
+            "p95": 9.699999999953434,
+            "p99": 13,
+            "max": 13
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 34461714,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 4.749,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 5.637722222222223
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1484.8000000000466,
+          "fps": 60.00134834490474,
+          "low1": 57.142857142857146,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17.300000000046566,
+            "p99": 17.5,
+            "max": 17.5
+          },
+          "work": {
+            "mean": 2.108888888891993,
+            "p50": 2,
+            "p95": 3.800000000046566,
+            "p99": 7.600000000093132,
+            "max": 7.600000000093132
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 48172394,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.613455555555554
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1484.0999999998603,
+          "fps": 60.00943968714745,
+          "low1": 55.55555555555556,
+          "interval": {
+            "mean": 16.664044943818656,
+            "p50": 16.699999999953434,
+            "p95": 17.5,
+            "p99": 18,
+            "max": 18
+          },
+          "work": {
+            "mean": 1.0188888888935455,
+            "p50": 1,
+            "p95": 2.300000000046566,
+            "p99": 3.9000000001396984,
+            "max": 3.9000000001396984
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 53500154,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.8666333333333336
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "profile": "mobile",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1517.3999999999069,
+          "fps": 58.69163809021727,
+          "low1": 23.310023309947404,
+          "interval": {
+            "mean": 17.038202247189965,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 42.9000000001397,
+            "max": 42.9000000001397
+          },
+          "work": {
+            "mean": 1.674444444430992,
+            "p50": 1.1000000000931323,
+            "p95": 3.300000000046566,
+            "p99": 38,
+            "max": 38
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 25689615,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 5.183,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 2.2618555555555555
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1482.8999999999069,
+          "fps": 60.074249071886605,
+          "low1": 50.76142131991694,
+          "interval": {
+            "mean": 16.646067415730336,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 19.699999999953434,
+            "max": 19.699999999953434
+          },
+          "work": {
+            "mean": 1.1533333333390248,
+            "p50": 1.1000000000931323,
+            "p95": 2.0999999998603016,
+            "p99": 6.100000000093132,
+            "max": 6.100000000093132
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28182739,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 1.653,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.7794888888888891
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1500.4000000001397,
+          "fps": 59.353117705901965,
+          "low1": 31.746031746031747,
+          "interval": {
+            "mean": 16.848314606741575,
+            "p50": 16.600000000093132,
+            "p95": 18.300000000046566,
+            "p99": 31.5,
+            "max": 31.5
+          },
+          "work": {
+            "mean": 1.2322222222289485,
+            "p50": 0.9000000001396984,
+            "p95": 1.8999999999068677,
+            "p99": 28.600000000093132,
+            "max": 28.600000000093132
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 25067170,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 16.529,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.024422222222222
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1749.9000000001397,
+          "fps": 51.223021582733814,
+          "low1": 11.185682326633577,
+          "interval": {
+            "mean": 19.52247191011236,
+            "p50": 18.800000000046566,
+            "p95": 29,
+            "p99": 89.39999999990687,
+            "max": 89.39999999990687
+          },
+          "work": {
+            "mean": 17.391111111120942,
+            "p50": 16.800000000046566,
+            "p95": 24.9000000001397,
+            "p99": 85,
+            "max": 85
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 32042034,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 67.596,
+          "gcCount": 38,
+          "callbackThreadMsPerFrame": 17.9203
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 3874,
+          "fps": 23.24488090263381,
+          "low1": 10.1010101010101,
+          "interval": {
+            "mean": 43.02022471909903,
+            "p50": 41.199999999953434,
+            "p95": 51.699999999953434,
+            "p99": 99,
+            "max": 99
+          },
+          "work": {
+            "mean": 41.26222222222843,
+            "p50": 39.800000000046566,
+            "p95": 49.89999999990687,
+            "p99": 95.19999999995343,
+            "max": 95.19999999995343
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 42020342,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 156.76200000000003,
+          "gcCount": 37,
+          "callbackThreadMsPerFrame": 41.79582222222223
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1485,
+          "fps": 60.00539374325971,
+          "low1": 44.64285714257873,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.600000000093132,
+            "p95": 19.200000000186265,
+            "p99": 22.4000000001397,
+            "max": 22.4000000001397
+          },
+          "work": {
+            "mean": 4.800000000007761,
+            "p50": 4.900000000139698,
+            "p95": 9.900000000139698,
+            "p99": 10.699999999953434,
+            "max": 10.699999999953434
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 42760910,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 3.319,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 5.091011111111109
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1486.5999999998603,
+          "fps": 59.9811295322801,
+          "low1": 54.3478260865439,
+          "interval": {
+            "mean": 16.671910112360074,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 18.4000000001397,
+            "max": 18.4000000001397
+          },
+          "work": {
+            "mean": 2.4200000000160395,
+            "p50": 2,
+            "p95": 6.100000000093132,
+            "p99": 10.400000000139698,
+            "max": 10.400000000139698
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 56476494,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 2.9610888888888875
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1483.2999999998137,
+          "fps": 60.00943968714745,
+          "low1": 56.179775280751905,
+          "interval": {
+            "mean": 16.664044943818656,
+            "p50": 16.600000000093132,
+            "p95": 17.5,
+            "p99": 17.800000000046566,
+            "max": 17.800000000046566
+          },
+          "work": {
+            "mean": 0.7188888888935455,
+            "p50": 0.6000000000931323,
+            "p95": 1.5999999998603016,
+            "p99": 7.399999999906868,
+            "max": 7.399999999906868
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 35085102,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4238000000000002
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "mobile",
+      "run": 3,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "menu",
+          "frames": 90,
+          "wallMs": 1483.2000000001863,
+          "fps": 60.01348617666891,
+          "low1": 34.48275862068966,
+          "interval": {
+            "mean": 16.662921348314608,
+            "p50": 16.5999999998603,
+            "p95": 17.899999999906868,
+            "p99": 29,
+            "max": 29
+          },
+          "work": {
+            "mean": 1.0533333333493728,
+            "p50": 0.8999999999068677,
+            "p95": 2.2000000001862645,
+            "p99": 8.299999999813735,
+            "max": 8.299999999813735
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 29088,
+          "heapBytes": 26695616,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "de36ce61",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 3.594,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.9228888888888882
+        },
+        {
+          "scene": "songs",
+          "frames": 90,
+          "wallMs": 1485.4000000001397,
+          "fps": 59.96092434143853,
+          "low1": 55.55555555555556,
+          "interval": {
+            "mean": 16.677528089888163,
+            "p50": 16.699999999953434,
+            "p95": 17.600000000093132,
+            "p99": 18,
+            "max": 18
+          },
+          "work": {
+            "mean": 0.8722222222377443,
+            "p50": 0.8999999999068677,
+            "p95": 2,
+            "p99": 3.199999999953434,
+            "max": 3.199999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 51552,
+          "heapBytes": 28528046,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "f5707d51",
+            "nonuniformPixels": 283572
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.4414444444444443
+        },
+        {
+          "scene": "tiles",
+          "frames": 90,
+          "wallMs": 1483.1999999999534,
+          "fps": 60.00539374325971,
+          "low1": 52.91005291031363,
+          "interval": {
+            "mean": 16.665168539325318,
+            "p50": 16.700000000186265,
+            "p95": 18.600000000093132,
+            "p99": 18.899999999906868,
+            "max": 18.899999999906868
+          },
+          "work": {
+            "mean": 0.7444444444315094,
+            "p50": 0.2999999998137355,
+            "p95": 1.4000000001396984,
+            "p99": 14.699999999953434,
+            "max": 14.699999999953434
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 8064,
+          "heapBytes": 24942301,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "e3b53e85",
+            "nonuniformPixels": 267584
+          },
+          "glError": 0,
+          "gcMs": 13.256,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.7121333333333335
+        },
+        {
+          "scene": "burst",
+          "frames": 90,
+          "wallMs": 1501.5,
+          "fps": 59.33333333333333,
+          "low1": 20.790020790081172,
+          "interval": {
+            "mean": 16.853932584269664,
+            "p50": 16.699999999953434,
+            "p95": 18.5,
+            "p99": 48.0999999998603,
+            "max": 48.0999999998603
+          },
+          "work": {
+            "mean": 5.71666666667184,
+            "p50": 6.300000000046566,
+            "p95": 7.800000000046566,
+            "p99": 13,
+            "max": 13
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 27271189,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "6afc8ed3",
+            "nonuniformPixels": 21488
+          },
+          "glError": 0,
+          "gcMs": 26.746,
+          "gcCount": 13,
+          "callbackThreadMsPerFrame": 6.360100000000001
+        },
+        {
+          "scene": "expiry",
+          "frames": 90,
+          "wallMs": 1504.1999999999534,
+          "fps": 59.31751532924922,
+          "low1": 26.73796791433863,
+          "interval": {
+            "mean": 16.858426966291088,
+            "p50": 16.699999999953434,
+            "p95": 17.800000000046566,
+            "p99": 37.4000000001397,
+            "max": 37.4000000001397
+          },
+          "work": {
+            "mean": 5.080000000004657,
+            "p50": 4.600000000093132,
+            "p95": 6.300000000046566,
+            "p99": 34.700000000186265,
+            "max": 34.700000000186265
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 31733077,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 31.573999999999998,
+          "gcCount": 22,
+          "callbackThreadMsPerFrame": 5.804655555555554
+        },
+        {
+          "scene": "combined",
+          "frames": 90,
+          "wallMs": 1489.3999999999069,
+          "fps": 60.00134834490474,
+          "low1": 24.449877750527737,
+          "interval": {
+            "mean": 16.666292134831984,
+            "p50": 16.699999999953434,
+            "p95": 17.899999999906868,
+            "p99": 40.9000000001397,
+            "max": 40.9000000001397
+          },
+          "work": {
+            "mean": 4.227777777772603,
+            "p50": 4.199999999953434,
+            "p95": 7.5,
+            "p99": 10.299999999813735,
+            "max": 10.299999999813735
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124046.4,
+          "heapBytes": 36040549,
+          "audioBursts": 4,
+          "particleCount": 880,
+          "framebuffer": {
+            "hash": "2792897e",
+            "nonuniformPixels": 268833
+          },
+          "glError": 0,
+          "gcMs": 0.786,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 4.522444444444442
+        },
+        {
+          "scene": "rooms",
+          "frames": 90,
+          "wallMs": 1484.5999999998603,
+          "fps": 60.029677593422626,
+          "low1": 43.47826086956522,
+          "interval": {
+            "mean": 16.658426966290566,
+            "p50": 16.600000000093132,
+            "p95": 17.4000000001397,
+            "p99": 23,
+            "max": 23
+          },
+          "work": {
+            "mean": 2.0433333333348855,
+            "p50": 1.6000000000931323,
+            "p95": 4.100000000093132,
+            "p99": 11.100000000093132,
+            "max": 11.100000000093132
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 53806.4,
+          "heapBytes": 31073221,
+          "audioBursts": 0,
+          "particleCount": 267,
+          "framebuffer": {
+            "hash": "5d5254df",
+            "nonuniformPixels": 268359
+          },
+          "glError": 0,
+          "gcMs": 3.866,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 2.330899999999999
+        },
+        {
+          "scene": "resources",
+          "frames": 90,
+          "wallMs": 1485.8999999999069,
+          "fps": 59.94073275862821,
+          "low1": 53.76344085994585,
+          "interval": {
+            "mean": 16.683146067413638,
+            "p50": 16.699999999953434,
+            "p95": 17.699999999953434,
+            "p99": 18.600000000093132,
+            "max": 18.600000000093132
+          },
+          "work": {
+            "mean": 0.8200000000056914,
+            "p50": 0.6999999999534339,
+            "p95": 1.7000000001862645,
+            "p99": 5.300000000046566,
+            "max": 5.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 2880,
+          "heapBytes": 35768229,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "1bd55c5",
+            "nonuniformPixels": 230400
+          },
+          "glError": 0,
+          "gcMs": 0,
+          "gcCount": 0,
+          "callbackThreadMsPerFrame": 1.6295111111111116
+        }
+      ]
+    }
+  ]
+}

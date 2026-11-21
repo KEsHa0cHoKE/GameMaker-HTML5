@@ -1,0 +1,248 @@
+{
+  "browser": "140.0.7339.0",
+  "frames": 100,
+  "warmup": 60,
+  "repeats": 1,
+  "scenarios": "burst,expiry,combined",
+  "profiles": [
+    "desktop"
+  ],
+  "measurements": [
+    {
+      "variant": "baseline",
+      "profile": "desktop",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "burst",
+          "frames": 100,
+          "wallMs": 1659,
+          "fps": 59.996363856741034,
+          "low1": 39.370078740301835,
+          "interval": {
+            "mean": 16.667676767675356,
+            "p50": 16.699999999953434,
+            "p95": 17.100000000093132,
+            "p99": 25.399999999906868,
+            "max": 25.399999999906868
+          },
+          "work": {
+            "mean": 7.294000000020024,
+            "p50": 7,
+            "p95": 11.799999999813735,
+            "p99": 21.4000000001397,
+            "max": 25
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 38660189,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "9df7bb54",
+            "nonuniformPixels": 21016
+          },
+          "glError": 0,
+          "gcMs": 33.321999999999996,
+          "gcCount": 31,
+          "callbackThreadMsPerFrame": 5.371889999999994
+        },
+        {
+          "scene": "expiry",
+          "frames": 100,
+          "wallMs": 1659.2000000001863,
+          "fps": 60.00363658403032,
+          "low1": 50.505050505525624,
+          "interval": {
+            "mean": 16.665656565657976,
+            "p50": 16.699999999953434,
+            "p95": 16.899999999906868,
+            "p99": 19.799999999813735,
+            "max": 19.799999999813735
+          },
+          "work": {
+            "mean": 9.560000000006985,
+            "p50": 9.399999999906868,
+            "p95": 11.199999999953434,
+            "p99": 13,
+            "max": 19.299999999813735
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 54831863,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 49.75899999999997,
+          "gcCount": 42,
+          "callbackThreadMsPerFrame": 9.53579999999999
+        },
+        {
+          "scene": "combined",
+          "frames": 100,
+          "wallMs": 1651,
+          "fps": 59.99999999999999,
+          "low1": 57.142857142857146,
+          "interval": {
+            "mean": 16.666666666666668,
+            "p50": 16.699999999953434,
+            "p95": 16.9000000001397,
+            "p99": 17.5,
+            "max": 17.5
+          },
+          "work": {
+            "mean": 1.3150000000093132,
+            "p50": 1.0999999998603016,
+            "p95": 1.7000000001862645,
+            "p99": 3.800000000046566,
+            "max": 14.600000000093132
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124709.76,
+          "heapBytes": 36799894,
+          "audioBursts": 4,
+          "particleCount": 810,
+          "framebuffer": {
+            "hash": "27d77198",
+            "nonuniformPixels": 292689
+          },
+          "glError": 0,
+          "gcMs": 5.553,
+          "gcCount": 1,
+          "callbackThreadMsPerFrame": 1.387890000000001
+        }
+      ]
+    },
+    {
+      "variant": "updated",
+      "profile": "desktop",
+      "run": 1,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/140.0.7339.0 Safari/537.36",
+      "canvas": [
+        480,
+        640
+      ],
+      "results": [
+        {
+          "scene": "burst",
+          "frames": 100,
+          "wallMs": 1651.3000000000466,
+          "fps": 60.0072736089206,
+          "low1": 50.25125628164221,
+          "interval": {
+            "mean": 16.664646464646935,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 19.899999999906868,
+            "max": 19.899999999906868
+          },
+          "work": {
+            "mean": 1.7219999999925495,
+            "p50": 1.4000000001396984,
+            "p95": 4.399999999906868,
+            "p99": 6.899999999906868,
+            "max": 8.300000000046566
+          },
+          "drawCalls": 1,
+          "uploads": 1,
+          "uploadBytes": 144000,
+          "heapBytes": 27891678,
+          "audioBursts": 0,
+          "particleCount": 1000,
+          "framebuffer": {
+            "hash": "9df7bb54",
+            "nonuniformPixels": 21016
+          },
+          "glError": 0,
+          "gcMs": 23.021999999999995,
+          "gcCount": 12,
+          "callbackThreadMsPerFrame": 1.55226
+        },
+        {
+          "scene": "expiry",
+          "frames": 100,
+          "wallMs": 1784.8000000000466,
+          "fps": 55.51194347875136,
+          "low1": 8.944543828279661,
+          "interval": {
+            "mean": 18.01414141414047,
+            "p50": 16.699999999953434,
+            "p95": 28.799999999813735,
+            "p99": 111.79999999981374,
+            "max": 111.79999999981374
+          },
+          "work": {
+            "mean": 2.1720000000018627,
+            "p50": 1.4000000001396984,
+            "p95": 4.100000000093132,
+            "p99": 17.799999999813735,
+            "max": 19.800000000046566
+          },
+          "drawCalls": 0,
+          "uploads": 0,
+          "uploadBytes": 0,
+          "heapBytes": 33272582,
+          "audioBursts": 0,
+          "particleCount": 0,
+          "framebuffer": {
+            "hash": "868f3dc5",
+            "nonuniformPixels": 0
+          },
+          "glError": 0,
+          "gcMs": 8.692,
+          "gcCount": 25,
+          "callbackThreadMsPerFrame": 2.2543699999999993
+        },
+        {
+          "scene": "combined",
+          "frames": 100,
+          "wallMs": 1651,
+          "fps": 60.00363658403879,
+          "low1": 43.47826086956522,
+          "interval": {
+            "mean": 16.665656565655624,
+            "p50": 16.699999999953434,
+            "p95": 17,
+            "p99": 23,
+            "max": 23
+          },
+          "work": {
+            "mean": 1.1199999999860302,
+            "p50": 1,
+            "p95": 2.0999999998603016,
+            "p99": 5,
+            "max": 6.5
+          },
+          "drawCalls": 2,
+          "uploads": 1,
+          "uploadBytes": 124709.76,
+          "heapBytes": 32138774,
+          "audioBursts": 4,
+          "particleCount": 810,
+          "framebuffer": {
+            "hash": "27d77198",
+            "nonuniformPixels": 292689
+          },
+          "glError": 0,
+          "gcMs": 5.48,
+          "gcCount": 2,
+          "callbackThreadMsPerFrame": 1.1966500000000004
+        }
+      ]
+    }
+  ]
+}

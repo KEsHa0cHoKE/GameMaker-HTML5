@@ -1,0 +1,151 @@
+{
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "resolution": [
+    480,
+    640
+  ],
+  "gradient": {
+    "p50Ms": 1.3000000000465661,
+    "p95Ms": 1.8000000000465661
+  },
+  "background": {
+    "p50Ms": 19.399999999906868,
+    "p95Ms": 20.800000000046566
+  },
+  "blur": {
+    "p50Ms": 2.9000000001396984,
+    "p95Ms": 6.5
+  },
+  "experiment": {
+    "p50Ms": 7.400000000139698,
+    "p95Ms": 7.7999999998137355
+  },
+  "pixelChecks": [
+    {
+      "frame": 0,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 1,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 157,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 180,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 261,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 360,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 481,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 540,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 721,
+      "palette": 0,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 0,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 1,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 157,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 180,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 261,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 360,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 481,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 540,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    },
+    {
+      "frame": 721,
+      "palette": 1,
+      "maxDifference": 0,
+      "differingChannels": 0,
+      "channels": 1228800
+    }
+  ]
+}

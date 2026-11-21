@@ -203,7 +203,7 @@ function Emitter_Reset()
 ///			</returns>
 // #############################################################################################
 /**@constructor*/
-function yyParticle()
+function yyParticle(_type)
 {
 	this.alive=false;			// whether still alive
 	this.parttype=0;			// the particle type
@@ -214,11 +214,8 @@ function yyParticle()
 	this.speed=0;				// speed
 	this.dir=0;					// direction
 	this.ang=0;					// angle
-	this.colmode = COLMODE_ONE;	// color mechanism used
-	this.colpar = [];			// (6) color parameters, depending on mode
-    this.colpar[0] = clWhite;
-    this.colpar[1] = clWhite;
-    this.colpar[2] = clWhite;
+	this.colmode = _type.colmode;
+	this.colpar = _type.colpar.slice();
 	this.color=0xffffff;		// the current color
 	this.colorOverride=false;	// if true then the color overrides color defined in part. type
 	this.alpha=1.0;				// current alpha
@@ -929,10 +926,10 @@ function Compute_Color(_pParticle)
 // #############################################################################################
 function CreateParticle(_system, _x, _y, _parttype)
 {
-	var Result = new yyParticle;
-	
 	var pParType = g_ParticleTypes[_parttype];
-	if( pParType==null || pParType==undefined ) return null;
+	if (pParType == null) return null;
+
+	var Result = new yyParticle(pParType);
 
 	Result.alive = true;
 	Result.parttype = _parttype;
@@ -944,12 +941,6 @@ function CreateParticle(_system, _x, _y, _parttype)
 	Result.lifetime =   MyRandom( pParType.lifemin, pParType.lifemax, 0);
 	Result.age = 0;
 	Result.color = 0xffffff;	
-	Result.colmode = pParType.colmode;
-	Result.colpar = [];
-	for (var i = 0; i < pParType.colpar.length; ++i)
-	{
-		Result.colpar.push(pParType.colpar[i]);
-	}
 	Compute_Color(Result);
 		
 	Result.alpha = pParType.alphastart;
@@ -2941,56 +2932,43 @@ function ParticleSystem_AutomaticDraw(_ps, _automatic)
 // #############################################################################################
 function HandleLife( _ps, _em )
 {
-	var i = 0;
-	var numb = 0;
-
 	var pPartSys = g_ParticleSystemManager.Get(_ps);
 	var pEmitter = pPartSys.emitters[_em];
 	var pParticles = pEmitter.particles;
+	var write = 0;
 
-	while (i < pParticles.length)
+	// Read the live length: particles appended by step/death are processed this tick.
+	// Compact the survivors in their original order without shifting the tail for each death.
+	for (var read = 0; read < pParticles.length; read++)
 	{
-		var pParticle = pParticles[i];
-		if(pParticle!==null)
+		var particle = pParticles[read];
+		if (particle === null)
 		{
-			var pParType = g_ParticleTypes[ pParticle.parttype ];
-			
-			// Update the age and create death particles
-			pParticle.age++;
-				
-			if ( pParticle.age >= pParticle.lifetime )			// change this to a check with 0... and count age down.
-			{
-				if (pParType !== null)
-				{
-					numb = pParType.deathnumber;
-					if ( numb<0 ){
-						if ( ~~YYRandom(-numb) == 0 ) numb = 1;
-					}
-					if  ( numb > 0 ){
-						EmitParticles(pPartSys, pEmitter, pParticle.x, pParticle.y, pParType.deathtype, numb);
-					}
-				}
-				pParticles.splice(i,1);	// remove particle
-			} else {
-				if (pParType !== null)
-				{
-					// Create step particles
-					numb = pParType.stepnumber;
-					if ( numb<0 ){
-						if ( ~~YYRandom(-numb) == 0 ) numb = 1;
-					}
-					if ( numb > 0 ){
-						EmitParticles(pPartSys, pEmitter, pParticle.x, pParticle.y, pParType.steptype, numb);
-					}
-				}
-			
-				i++;		// next particle. Dont do if we deleted one, because SPLICE moves them all down...
-			}
-			
+			if (write !== read) pParticles[write] = particle;
+			write++;
+			continue;
 		}
-		else
-			i++;
+
+		var type = g_ParticleTypes[particle.parttype];
+		particle.age++;
+		var expired = particle.age >= particle.lifetime;
+		if (type !== null)
+		{
+			var count = expired ? type.deathnumber : type.stepnumber;
+			if (count < 0 && ~~YYRandom(-count) == 0) count = 1;
+			if (count > 0)
+			{
+				var childType = expired ? type.deathtype : type.steptype;
+				EmitParticles(pPartSys, pEmitter, particle.x, particle.y, childType, count);
+			}
+		}
+		if (!expired)
+		{
+			if (write !== read) pParticles[write] = particle;
+			write++;
+		}
 	}
+	if (write !== pParticles.length) pParticles.length = write;
 }
 
 

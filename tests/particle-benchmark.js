@@ -65,6 +65,9 @@ function counts() {
     const systems = [...particlesRuntime, ...particlesRoom].filter(Boolean);
     const emitters = systems.flatMap(system => system.emitters);
     const slots = emitters.reduce((sum, emitter) => sum + emitter.particles.length, 0);
+    const extendedWords = typeof extendedRandomState === "undefined"
+        ? (typeof state[0] === "bigint" ? state : null)
+        : (rand === randExtended ? extendedRandomState : null);
     return {
         types: g_ParticleTypes.filter(Boolean).length,
         typeSlots: g_ParticleTypes.length,
@@ -75,7 +78,7 @@ function counts() {
         emitters: emitters.filter(emitter => emitter.created || emitter.zombie).length,
         particleSlots: slots,
         liveParticles: emitters.reduce((sum, emitter) => sum + emitter.particles.filter(Boolean).length, 0),
-        stateBits: typeof state[0] === "bigint" ? Math.max(...state.map(word => word.toString(2).length)) : 32,
+        stateBits: extendedWords ? Math.max(...Array.from(extendedWords, word => word.toString(2).length)) : 32,
         heapBytes: performance.memory?.usedJSHeapSize ?? null,
     };
 }

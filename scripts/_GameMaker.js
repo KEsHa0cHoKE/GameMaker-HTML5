@@ -857,9 +857,9 @@ if( div_a>360 ) div_a-=360;
 ///				
 ///			 </returns>
 // #############################################################################################
-function animate() {
-    // once in-game, timing is handled by GameMaker_Tick
-    if (g_StartUpState != 3) window.requestAnimFrame(animate);
+function animate(_timestamp) {
+    var startupFrameScheduled = g_StartUpState != 3;
+    if (startupFrameScheduled) window.requestAnimFrame(animate);
     
 
     if (g_LoadingCanvasCreated) {
@@ -971,7 +971,9 @@ function animate() {
                 break;
 
             case 3:
-                GameMaker_Tick();
+                if (!window.yyFrameSchedulerStep || !window.yyFrameSchedulerStep(_timestamp, startupFrameScheduled)) {
+                    GameMaker_Tick(startupFrameScheduled);
+                }
                 break;	
         }
     }
@@ -2336,7 +2338,7 @@ var g_CollisionEllipseCounter = 0;
 ///             Starts the next frame, and uses the "timer" to sleep...
 ///          </summary>
 // #############################################################################################
-function GameMaker_Tick() 
+function GameMaker_Tick(_nextFrameScheduled) 
 {
 	//
 	if (g_webGL) {
@@ -2371,27 +2373,30 @@ function GameMaker_Tick()
     // schedule next frame:
     // this might be best done after if(!Run_Paused) block,
     // but then an exception would halt the game loop.
-    var nextFrameAt = g_FrameStartTime + 1000 / TargetSpeed;
-    var now = Date.now();
-    var delay = g_FrameStartTime + 1000 / TargetSpeed - now;
-    if (delay < 0) delay = 0;
-    g_FrameStartTime = now + delay;
-    if (delay > 4) {
-        // 4ms is the general minimum timeout time as per spec,
-        // https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers
-        setTimeout(function() {
+    if (_nextFrameScheduled) {
+        g_FrameStartTime = g_CurrentTime;
+    } else {
+        var now = Date.now();
+        var delay = g_FrameStartTime + 1000 / TargetSpeed - now;
+        if (delay < 0) delay = 0;
+        g_FrameStartTime = now + delay;
+        if (delay > 4) {
+            // 4ms is the general minimum timeout time as per spec,
+            // https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers
+            setTimeout(function() {
+                if (window.yyRequestAnimationFrame) {
+                    window.yyRequestAnimationFrame(animate);
+                } else {
+                    // Don't re-enter, that would be bad.
+                    //animate();
+                }
+            }, delay);
+        } else {
             if (window.yyRequestAnimationFrame) {
                 window.yyRequestAnimationFrame(animate);
             } else {
-                // Don't re-enter, that would be bad.
-                //animate();
+                window.postMessage("yyRequestAnimationFrame", "*");
             }
-        }, delay); 
-    } else {
-        if (window.yyRequestAnimationFrame) {
-            window.yyRequestAnimationFrame(animate);
-        } else {
-            window.postMessage("yyRequestAnimationFrame", "*");
         }
     }
 

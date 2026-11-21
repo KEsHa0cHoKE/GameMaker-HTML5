@@ -511,13 +511,7 @@ function WebGL_StartFrame_RELEASE() {
     g_webGL.SetAmbientLighting(GR_AmbientLight);
     g_webGL.SetColorWriteEnable(GR_ColourWriteEnable.red, GR_ColourWriteEnable.green, GR_ColourWriteEnable.blue, GR_ColourWriteEnable.alpha);
         
-    for (var i = 0; i < yyGL.MAX_LIGHTS; i++) {
-    
-        g_webGL.SetLight(i, 
-            GR_PointLights.subarray(i*4, (i+1)*4),
-            GR_DirectionalLights.subarray(i*4, (i+1)*4),
-            GR_LightColours.subarray(i*4, (i+1)*4));
-    }
+    g_webGL.SetLights(GR_PointLights, GR_DirectionalLights, GR_LightColours);
     
     // TODO: And the rest...
 }

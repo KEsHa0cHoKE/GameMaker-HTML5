@@ -66,7 +66,8 @@ function yyCommandBuilder(_interpolatePixels) {
         CMD_SETLIGHTENABLE = 25,
         CMD_SETALPHATEST = 26,
         CMD_UPDATE_TEXTURE = 27,
-        CMD_SETSCISSOR = 28;
+        CMD_SETSCISSOR = 28,
+        CMD_SETLIGHTS = 29;
         
     // Shader constant setup for m_matrices
     var CMD_MATRIX_VIEW = 0,
@@ -599,6 +600,12 @@ function yyCommandBuilder(_interpolatePixels) {
     ///           </summary>
     // #############################################################################################
     /** @this {yyCommandBuilder} */
+    this.SetLights = function (_pointLights, _dirLights, _lightColours) {
+        // Snapshot the frame defaults since later draw calls can change these arrays.
+        m_commandList.push(CMD_SETLIGHTS, new Float32Array(_pointLights),
+            new Float32Array(_dirLights), new Float32Array(_lightColours));
+    };
+
     this.SetLight = function (ind, pointlight, dirlight, lightcol) {
         
         m_commandList.push(CMD_SETLIGHT);
@@ -1677,6 +1684,15 @@ function yyCommandBuilder(_interpolatePixels) {
                         break;
                     }            
 
+                case CMD_SETLIGHTS:
+                    {
+                        m_pointLights.set(m_commandList[i + 1]);
+                        m_directionalLights.set(m_commandList[i + 2]);
+                        m_lightColours.set(m_commandList[i + 3]);
+                        i += 4;
+                        SetLightingEnv(SHADER_ENV_LIGHTING_BIT);
+                        break;
+                    }
                 case CMD_SETLIGHT:
                     {
                         ind = m_commandList[i + 1];
