@@ -26,6 +26,12 @@ function stats(samples) {
 }
 
 async function startBenchmark() {
+    // Compiled games call the public RNG entry point during initialization.
+    random_set_seed(12345);
+    if (random(1) !== 1715860630 / 0x7fffffff ||
+        random(2) !== 2 * (540338984 / 0x7fffffff)) {
+        throw new Error("Unexpected random() output during startup");
+    }
     canvas = document.querySelector("#canvas");
     DISPLAY_WIDTH = canvas.width;
     DISPLAY_HEIGHT = canvas.height;

@@ -510,6 +510,23 @@ function randExtended() {
 
 // #############################################################################################
 /// Function:<summary>
+///          	Returns a random real number between 0 and x. The number is always smaller than x.
+///          </summary>
+///
+/// In:		<param name="_v"></param>
+/// Out:	<returns>
+///				
+///			</returns>
+// #############################################################################################
+function random(_v)
+{
+	var r = rand();
+	return r * yyGetReal(_v);
+}
+
+
+// #############################################################################################
+/// Function:<summary>
 ///          	Returns a random integer number between 0 and x (inclusive when x is an integer).
 ///          </summary>
 ///

@@ -13,9 +13,9 @@ function loadMaths() {
     class FixedDate extends Date {
         constructor() { super(1_700_000_000_000); }
     }
-    return vm.runInNewContext(source + "\n({ random_set_seed, random_get_seed, randomize, " +
+    return vm.runInNewContext(source + "\n({ random, random_set_seed, random_get_seed, randomize, " +
         'randomise, random_use_old_version, next: () => rand(), state: typeof extendedRandomState === "undefined" ? state : extendedRandomState })',
-    { yyGetInt32: value => value | 0, Date: FixedDate });
+    { yyGetInt32: value => value | 0, yyGetReal: Number, Date: FixedDate });
 }
 
 // Reference: the input runtime's bounded BigInt recurrence.
@@ -84,4 +84,22 @@ test("randomize and its alias select the extended mode; one-argument seeds still
     const legacyWords = [1715860630, 540338984, 34089729, 2053762291,
         1826726686, 179941711, 643335848, 1142551168];
     for (const word of legacyWords) assert.equal(rng.next(), word / 0x7fffffff);
+});
+
+test("public random() scales one draw from the active RNG", () => {
+    const rng = loadMaths();
+    const check = next => {
+        assert.equal(rng.random(0), 0 * next());
+        assert.equal(rng.random("2.5"), 2.5 * next());
+        assert.equal(rng.random(-8), -8 * next());
+        assert.equal(rng.next(), next());
+    };
+
+    rng.random_set_seed(12345);
+    const legacyWords = [1715860630, 540338984, 34089729, 2053762291];
+    let index = 0;
+    check(() => legacyWords[index++] / 0x7fffffff);
+
+    rng.random_set_seed(12345, true);
+    check(reference(12345, 0xda442d24));
 });
